@@ -28,14 +28,14 @@ function switchTab(tabId) {
         tabs[i].style.display = "none";
     }
 
-    // إزالة الصف واللون النشط من القائمة الجانبية الملونة
+    // إزالة اللون النشط من كافة خيارات القائمة الجانبية الملونة
     let menuItems = document.querySelectorAll(".sidebar-menu li");
     menuItems.forEach(item => item.classList.remove("active"));
 
     // إظهار واجهة الخدمة المطلوبة والمطابقة للمخطط بالملي
     document.getElementById("tab-" + tabId).style.display = "block";
 
-    // تفعيل وتلوين زر القائمة المختار باللون الزمردي
+    // تفعيل وإضافة التنسيق الأخضر للخيار النشط حالياً في القائمة الجانبية
     document.getElementById("menu-" + tabId).classList.add("active");
 }
 
