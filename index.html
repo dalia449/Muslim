@@ -3,30 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - تطبيق مُسلم</title>
+    <title>E-commerce Management System - Login</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="login-container">
-    <h1>مُسلم</h1>
-    <form action="php/login.php" method="POST" onsubmit="return validateLogin()">
-        <label>نوع الهوية</label>
-        <select name="id_type" required>
-            <option value="">اختر نوع الهوية</option>
-            <option value="national">هوية وطنية</option>
-            <option value="iqama">إقامة</option>
-            <option value="visitor">بطاقة زائر</option>
-        </select>
+
+<div class="login-wrapper" id="loginPage">
+    <div class="login-container">
+        <div class="logo-area">
+            <img src="logo.png" alt="Muslim Logo" class="main-logo-img">
+        </div>
         
-        <label>رقم الهوية / الإقامة</label>
-        <input type="text" name="id_number" id="idNumber" required>
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+            <label for="idType">ID Type</label>
+            <select id="idType" required>
+                <option value="">Choose</option>
+                <option value="national">National ID</option>
+                <option value="iqama">Iqama</option>
+                <option value="visitor">Visitor Card</option>
+            </select>
+            
+            <label for="idNumber">ID Number</label>
+            <input type="text" id="idNumber" placeholder="12345678910" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="••••" required>
+            
+            <button type="submit">تسجيل الدخول</button>
+        </form>
         
-        <label>كلمة المرور</label>
-        <input type="password" name="password" id="password" required>
-        
-        <button type="submit">تسجيل الدخول</button>
-    </form>
+        <div class="form-links">
+            <a href="#" class="link-left">Forgot Password?</a>
+            <a href="#" class="link-right">Register New User</a>
+        </div>
+    </div>
 </div>
+
+<div class="dashboard-wrapper" id="dashboardPage" style="display: none;">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            🕋 مسلم | Muslim
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active" id="menu-overview"><a href="#" onclick="switchTab('overview')">📊 نظرة عامة بالنظام</a></li>
+            <li id="menu-hajj"><a href="#" onclick="switchTab('hajj')">🕋 حجز باقات الحج</a></li>
+            <li id="menu-umrah"><a href="#" onclick="switchTab('umrah')">✨ تصاريح العمرة والزيارة</a></li>
+            <li id="menu-transport"><a href="#" onclick="switchTab('transport')">🚌 خدمات النقل والمواصلات</a></li>
+            <li id="menu-hotels"><a href="#" onclick="switchTab('hotels')">🏨 حجز الفنادق والإقامة</a></li>
+            <li id="menu-payments"><a href="#" onclick="switchTab('payments')">💳 بوابة الدفع الإلكتروني</a></li>
+            <li><a href="#" onclick="logout()" class="logout-link">🚪 تسجيل الخروج</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <h3>نظام إدارة خدمات الحج والعمرة الإليكتروني (Simulation Dashboard)</h3>
+            <div class="user-info">مرحباً بكِ في النظام الرقمي المحاكي 👋</div>
+        </div>
+
+        <div class="content-body">
+            <div id="tab-overview" class="tab-content">
+                <div class="dashboard-cards">
+                    <div class="card"><h4>إجمالي الباقات المتاحة</h4><p>4 باقات رقمية</p></div>
+                    <div class="card"><h4>حالة الربط والتحقق</h4><p style="color: #198754;">نشط (Simulation) ✅</p></div>
+                    <div class="card"><h4>الطلبات الحالية بقاعدة البيانات</h4><p>1 طلب مؤكد</p></div>
+                </div>
+                <div class="table-section">
+                    <h4>آخر عمليات المستخدمين المحاكية بالنظام</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>رقم الهوية المستعلم عنها</th>
+                                <th>نوع الخدمة المطلوبة</th>
+                                <th>حالة الدفع الإلكتروني</th>
+                                <th>حالة الطلب الإدارية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12345678910</td>
+                                <td>باقة العمرة الاقتصادية</td>
+                                <td>مدفوع عبر مدى 💳</td>
+                                <td><span class="status-badge success">تم التأكيد والمحاكاة</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-hajj" class="tab-content" style="display:none;">
+                <div class="service-box">
+                    <h4>🕋 نظام إدارة وتخصيص باقات الحج</h4>
+                    <p>هذه الخانة مخصصة لمحاكاة حجز الباقات وتوزيع الحجاج واختيار المخيمات في المشاعر المقدسة.</p>
+                    <div class="custom-form">
+                        <label>اختر شريحة باقة الحج:</label>
+                        <select><option>باقة الضيافة بلس (مشعر منى)</option><option>باقة التميز الأبراج (برج الساعة)</option></select>
+                        <button class="btn-action">حجز وتأكيد الباقة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-umrah" class="tab-content" style="display:none;">
+                <div class="service-box">
+                    <h4>✨ نظام محاكاة إصدار تصاريح العمرة والصلوات</h4>
+                    <p>هذه الخانة تحاكي التحقق من الطاقة الاستيعابية وإصدار تصاريح الطواف والصلاة في الروضة الشريفة.</p>
+                    <div class="custom-form">
+                        <label>تحديد التاريخ والوقت:</label>
+                        <input type="date">
+                        <button class="btn-action">إصدار وتأكيد التصريح</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-transport" class="tab-content" style="display:none;">
+                <div class="service-box">
+                    <h4>🚌 خدمات النقل والمواصلات اللوجستية</h4>
+                    <p>تخصيص وإدارة مقاعد حافلات النقابة العامة للسيارات وقطار الحرمين السريع للمعتمرين.</p>
+                </div>
+            </div>
+
+            <div id="tab-hotels" class="tab-content" style="display:none;">
+                <div class="service-box">
+                    <h4>🏨 نظام حجز وتوزيع الفنادق والإقامة</h4>
+                    <p>إدارة السكن الفندقي بمكة المكرمة والمدينة المنورة وتوزيع الغرف والأفواج بشكل رقمي منظم.</p>
+                </div>
+            </div>
+
+            <div id="tab-payments" class="tab-content" style="display:none;">
+                <div class="service-box">
+                    <h4>💳 بوابة محاكاة الدفع الإلكتروني الشاملة</h4>
+                    <p>بوابة الدفع الافتراضية للربط مع شبكات الدفع الوطنية (مدى، سداد، فيزا) لضمان حجز العمليات المالية.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/script.js"></script>
 </body>
 </html>
