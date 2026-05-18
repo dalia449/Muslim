@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Management System - Login</title>
+    <title>نظام إدارة خدمات الحج والعمرة - مسلم</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,16 +11,16 @@
 <div class="login-wrapper" id="loginPage">
     <div class="login-container">
         <div class="logo-area">
-            <img src="logo.png.PNG" alt="Muslim Logo" class="main-logo-img">
+            <img src="Logo.png.PNG" alt="Muslim Logo" class="main-logo-img">
         </div>
         
         <form id="loginForm" onsubmit="return handleLogin(event)">
             <label for="idType">ID Type</label>
             <select id="idType" required>
                 <option value="">Choose</option>
-                <option value="national">National ID</option>
-                <option value="iqama">Iqama</option>
-                <option value="visitor">Visitor Card</option>
+                <option value="national">National ID (هوية وطنية)</option>
+                <option value="iqama">Iqama (إقامة)</option>
+                <option value="visitor">Visitor Card (بطاقة زائر)</option>
             </select>
             
             <label for="idNumber">ID Number</label>
@@ -40,12 +40,13 @@
 </div>
 
 <div class="dashboard-wrapper" id="dashboardPage" style="display: none;">
+    
     <div class="sidebar">
         <div class="sidebar-brand">
             🕋 مسلم | Muslim
         </div>
         <ul class="sidebar-menu">
-            <li class="active" id="menu-overview"><a href="#" onclick="switchTab('overview')">📊 نظرة عامة بالنظام</a></li>
+            <li class="active" id="menu-overview"><a href="#" onclick="switchTab('overview')">📊 نظرة عامة على النظام</a></li>
             <li id="menu-hajj"><a href="#" onclick="switchTab('hajj')">🕋 حجز باقات الحج</a></li>
             <li id="menu-umrah"><a href="#" onclick="switchTab('umrah')">✨ تصاريح العمرة والزيارة</a></li>
             <li id="menu-transport"><a href="#" onclick="switchTab('transport')">🚌 خدمات النقل والمواصلات</a></li>
@@ -53,88 +54,119 @@
             <li id="menu-payments"><a href="#" onclick="switchTab('payments')">💳 بوابة الدفع الإلكتروني</a></li>
             <li><a href="#" onclick="logout()" class="logout-link">🚪 تسجيل الخروج</a></li>
         </ul>
+        <div class="sidebar-user-avatar">
+            <div class="avatar-icon">🧔🏽</div>
+            <div class="avatar-name">رمز الحاج المحاكي</div>
+        </div>
     </div>
 
     <div class="main-content">
         <div class="top-bar">
-            <h3>نظام إدارة خدمات الحج والعمرة الإليكتروني (Simulation Dashboard)</h3>
-            <div class="user-info">مرحباً بكِ في النظام الرقمي المحاكي 👋</div>
+            <h3>مخطط تدفق مستخدم نظام مُسلم الذكي (Simulation Model)</h3>
+            <div class="user-info">تحديث حالة النظام في الوقت الفعلي مفعّل ✅</div>
         </div>
 
         <div class="content-body">
+            
             <div id="tab-overview" class="tab-content">
                 <div class="dashboard-cards">
                     <div class="card"><h4>إجمالي الباقات المتاحة</h4><p>4 باقات رقمية</p></div>
-                    <div class="card"><h4>حالة الربط والتحقق</h4><p style="color: #198754;">نشط (Simulation) ✅</p></div>
-                    <div class="card"><h4>الطلبات الحالية بقاعدة البيانات</h4><p>1 طلب مؤكد</p></div>
+                    <div class="card"><h4>تحديث حالة البيانات</h4><p style="color: #198754;">مستقر وفي الوقت الفعلي</p></div>
+                    <div class="card"><h4>الطلبات المسجلة</h4><p>1 طلب مؤكد بنجاح</p></div>
                 </div>
-                <div class="table-section">
-                    <h4>آخر عمليات المستخدمين المحاكية بالنظام</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>رقم الهوية المستعلم عنها</th>
-                                <th>نوع الخدمة المطلوبة</th>
-                                <th>حالة الدفع الإلكتروني</th>
-                                <th>حالة الطلب الإدارية</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>12345678910</td>
-                                <td>باقة العمرة الاقتصادية</td>
-                                <td>مدفوع عبر مدى 💳</td>
-                                <td><span class="status-badge success">تم التأكيد والمحاكاة</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                
+                <div class="info-box-simulation">
+                    <h4>مرحباً بك في النموذج المطور لنظام مُسلم البرمجي</h4>
+                    <p>تم تصميم هذا النظام ليعمل بمحاكاة كاملة ودقيقة لتدفق واجهات المستخدم وعمليات الحجز المرتبطة بقاعدة بيانات النظام <code>muslim</code>.</p>
                 </div>
             </div>
 
             <div id="tab-hajj" class="tab-content" style="display:none;">
-                <div class="service-box">
-                    <h4>🕋 نظام إدارة وتخصيص باقات الحج</h4>
-                    <p>هذه الخانة مخصصة لمحاكاة حجز الباقات وتوزيع الحجاج واختيار المخيمات في المشاعر المقدسة.</p>
-                    <div class="custom-form">
-                        <label>اختر شريحة باقة الحج:</label>
-                        <select><option>باقة الضيافة بلس (مشعر منى)</option><option>باقة التميز الأبراج (برج الساعة)</option></select>
-                        <button class="btn-action">حجز وتأكيد الباقة</button>
+                <div class="proto-grid">
+                    <div class="proto-card-visual">
+                        <div class="kaaba-frame">🕋</div>
+                        <h5>حزمة الحج المؤكدة</h5>
+                        <p class="price-tag">امتياز كامل</p>
+                    </div>
+                    <div class="proto-form-side">
+                        <h4>اختر حزمتك المخصصة (Package Selection)</h4>
+                        <div class="package-option-box">
+                            <div class="option-line"><strong>الباقة العامة:</strong> <span>$140.00</span></div>
+                            <div class="option-line"><strong>باقة الأبراج الفاخرة:</strong> <span>$250.00</span></div>
+                        </div>
+                        <button class="btn-action-success" onclick="alert('✅ تم محاكاة حجز الباقة بنجاح وإرسالها لجدول الحج في قاعدة البيانات!')">تأكيد الحجز الآن</button>
                     </div>
                 </div>
             </div>
 
             <div id="tab-umrah" class="tab-content" style="display:none;">
-                <div class="service-box">
-                    <h4>✨ نظام محاكاة إصدار تصاريح العمرة والصلوات</h4>
-                    <p>هذه الخانة تحاكي التحقق من الطاقة الاستيعابية وإصدار تصاريح الطواف والصلاة في الروضة الشريفة.</p>
-                    <div class="custom-form">
-                        <label>تحديد التاريخ والوقت:</label>
-                        <input type="date">
-                        <button class="btn-action">إصدار وتأكيد التصريح</button>
+                <div class="proto-grid-umrah">
+                    <div class="umrah-form">
+                        <h4>إصدار تصاريح العمرة الفورية</h4>
+                        <label>اختر التاريخ المناسب:</label>
+                        <input type="date" value="2026-05-19">
+                        <label>اختر الفترة الزمنية:</label>
+                        <select>
+                            <option>الفترة الأولى (من 11م إلى 2ص)</option>
+                            <option>الفترة الثانية (من 4ص إلى 7ص)</option>
+                        </select>
+                        <button class="btn-action-primary" onclick="showPermitSim()">إصدار تصريح محاكاة</button>
+                    </div>
+                    <div class="umrah-permit-result" id="permitDisplay" style="visibility: hidden;">
+                        <div class="permit-card">
+                            <img src="Logo.png.PNG" alt="Logo" style="width:50px;">
+                            <h5>تصريح معتمد (محاكاة)</h5>
+                            <p><strong>الاسم:</strong> مستخدم محاكي</p>
+                            <p><strong>حالة التصريح:</strong> مقبول ومؤكد ✅</p>
+                            <div class="qr-code-placeholder">❖ QR CODE ❖</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="tab-transport" class="tab-content" style="display:none;">
-                <div class="service-box">
-                    <h4>🚌 خدمات النقل والمواصلات اللوجستية</h4>
-                    <p>تخصيص وإدارة مقاعد حافلات النقابة العامة للسيارات وقطار الحرمين السريع للمعتمرين.</p>
+                <div class="transport-map-box">
+                    <h4>🚌 مسارات النقل والتحديث المباشر للمواقع</h4>
+                    <div class="mock-map">
+                        <div class="map-track">🟢 مكة المكرمة ──────────🚌 (حافلة تفاعلية) ────────── 🟢 المدينة المنورة</div>
+                    </div>
+                    <div class="transport-options">
+                        <div class="t-card"><h5>حافلات النقابة العامة</h5><p>الحالة: متوفرة | السعر: $15</p></div>
+                        <div class="t-card"><h5>قطار الحرمين السريع</h5><p>الحالة: متاح ومؤكد | السعر: $35</p></div>
+                    </div>
                 </div>
             </div>
 
             <div id="tab-hotels" class="tab-content" style="display:none;">
-                <div class="service-box">
-                    <h4>🏨 نظام حجز وتوزيع الفنادق والإقامة</h4>
-                    <p>إدارة السكن الفندقي بمكة المكرمة والمدينة المنورة وتوزيع الغرف والأفواج بشكل رقمي منظم.</p>
+                <h4>🏨 نظام حجز وتخصيص غرف الفنادق الفاخرة</h4>
+                <p>قم باختيار وتوزيع الغرف الفندقية للأفواج القادمة بمكة المكرمة والمدينة المنورة بمحاكاة عقود التسكين:</p>
+                <div class="hotel-grid">
+                    <div class="room-card">
+                        <div class="room-img">🛏️ غرف إطلالة حرم</div>
+                        <p>فندق برج الساعة الملكي</p>
+                        <button class="btn-action-primary" onclick="alert('تم حجز الغرفة بنجاح وإلحاقها ببيانات المستخدم المختار')">تأكيد الغرفة</button>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-img">🛏️ غرف ثنائية فاخرة</div>
+                        <p>فندق دار الإيمان إنتركونتيننتال</p>
+                        <button class="btn-action-primary" onclick="alert('تم حجز الغرفة بنجاح وإلحاقها ببيانات المستخدم المختار')">تأكيد الغرفة</button>
+                    </div>
                 </div>
             </div>
 
             <div id="tab-payments" class="tab-content" style="display:none;">
-                <div class="service-box">
-                    <h4>💳 بوابة محاكاة الدفع الإلكتروني الشاملة</h4>
-                    <p>بوابة الدفع الافتراضية للربط مع شبكات الدفع الوطنية (مدى، سداد، فيزا) لضمان حجز العمليات المالية.</p>
+                <div class="payment-modal-sim">
+                    <h4>💳 بوابة مدى وسداد الفيدرالية للدفع الرقمي الموحد</h4>
+                    <div class="payment-box-inner">
+                        <label>رقم البطاقة (Card Number)</label>
+                        <input type="text" placeholder="4000 1234 5678 9010">
+                        <label>اسم حامل البطاقة</label>
+                        <input type="text" placeholder="PILGRIM USER">
+                        <button class="btn-action-success" onclick="alert('💳 تم محاكاة بوابة الدفع بنجاح! تم الخصم وتحديث الحالة إلى (مدفوع) بنجاح تام.')">تأكيد عملية الدفع المالي</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
