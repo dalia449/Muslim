@@ -63,7 +63,7 @@
     <div class="main-content">
         <div class="top-bar">
             <h3>مخطط تدفق مستخدم نظام مُسلم الذكي (Simulation Model)</h3>
-            <div class="user-info">تحديث حالة النظام في الوقت الفعلي مفعّل ✅</div>
+            <div class="user-info">تحديث حالة البيانات في الوقت الفعلي مفعّل ✅</div>
         </div>
 
         <div class="content-body">
@@ -91,8 +91,8 @@
                     <div class="proto-form-side">
                         <h4>اختر حزمتك المخصصة (Package Selection)</h4>
                         <div class="package-option-box">
-                            <div class="option-line"><strong>الباقة العامة:</strong> <span>$140.00</span></div>
-                            <div class="option-line"><strong>باقة الأبراج الفاخرة:</strong> <span>$250.00</span></div>
+                            <div class="option-line"><strong>الباقة العامة (شامل السكن والمشاعر):</strong> <span>$140.00</span></div>
+                            <div class="option-line"><strong>باقة الأبراج الفاخرة (إطلالة الحرم):</strong> <span>$250.00</span></div>
                         </div>
                         <button class="btn-action-success" onclick="alert('✅ تم محاكاة حجز الباقة بنجاح وإرسالها لجدول الحج في قاعدة البيانات!')">تأكيد الحجز الآن</button>
                     </div>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="umrah-permit-result" id="permitDisplay" style="visibility: hidden;">
                         <div class="permit-card">
-                            <img src="Logo.png.PNG" alt="Logo" style="width:50px;">
+                            <img src="logo.png.PNG" alt="Logo" style="width:50px;">
                             <h5>تصريح معتمد (محاكاة)</h5>
                             <p><strong>الاسم:</strong> مستخدم محاكي</p>
                             <p><strong>حالة التصريح:</strong> مقبول ومؤكد ✅</p>
@@ -126,13 +126,33 @@
 
             <div id="tab-transport" class="tab-content" style="display:none;">
                 <div class="transport-map-box">
-                    <h4>🚌 مسارات النقل والتحديث المباشر للمواقع</h4>
-                    <div class="mock-map">
-                        <div class="map-track">🟢 مكة المكرمة ──────────🚌 (حافلة تفاعلية) ────────── 🟢 المدينة المنورة</div>
+                    <h4>🚌 مسارات النقل والتحديث المباشر للمواقع (مخطط تفاعلي)</h4>
+                    
+                    <div class="interactive-map">
+                        <div class="map-node">
+                            <span class="node-icon">🕋</span>
+                            <span class="node-text">مكة المكرمة</span>
+                        </div>
+                        <div class="map-route-line">
+                            <div class="moving-bus">🚌 حافلة 1</div>
+                        </div>
+                        <div class="map-node">
+                            <span class="node-icon">🕌</span>
+                            <span class="node-text">المدينة المنورة</span>
+                        </div>
                     </div>
+
                     <div class="transport-options">
-                        <div class="t-card"><h5>حافلات النقابة العامة</h5><p>الحالة: متوفرة | السعر: $15</p></div>
-                        <div class="t-card"><h5>قطار الحرمين السريع</h5><p>الحالة: متاح ومؤكد | السعر: $35</p></div>
+                        <div class="t-card">
+                            <h5>📍 محطة حافلات مكة المكرمة</h5>
+                            <p>الحالة: 5 حافلات متوفرة في كود التحديث</p>
+                            <span class="status-badge success">نشط الآن</span>
+                        </div>
+                        <div class="t-card">
+                            <h5>🚄 قطار الحرمين السريع</h5>
+                            <p>الحالة: متاح ومؤكد للربط مع المحطة الترددية</p>
+                            <span class="status-badge success">متاح للحجز</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,13 +162,15 @@
                 <p>قم باختيار وتوزيع الغرف الفندقية للأفواج القادمة بمكة المكرمة والمدينة المنورة بمحاكاة عقود التسكين:</p>
                 <div class="hotel-grid">
                     <div class="room-card">
-                        <div class="room-img">🛏️ غرف إطلالة حرم</div>
-                        <p>فندق برج الساعة الملكي</p>
+                        <div class="room-img-box">🕋</div>
+                        <h5>فندق برج الساعة الملكي</h5>
+                        <p>الغرف المتاحة: غرف مطلة على الحرم مباشرة</p>
                         <button class="btn-action-primary" onclick="alert('تم حجز الغرفة بنجاح وإلحاقها ببيانات المستخدم المختار')">تأكيد الغرفة</button>
                     </div>
                     <div class="room-card">
-                        <div class="room-img">🛏️ غرف ثنائية فاخرة</div>
-                        <p>فندق دار الإيمان إنتركونتيننتال</p>
+                        <div class="room-img-box">🕌</div>
+                        <h5>فندق دار الإيمان إنتركونتيننتال</h5>
+                        <p>الغرف المتاحة: غرف ثنائية فاخرة بالمنطقة المركزية</p>
                         <button class="btn-action-primary" onclick="alert('تم حجز الغرفة بنجاح وإلحاقها ببيانات المستخدم المختار')">تأكيد الغرفة</button>
                     </div>
                 </div>
@@ -156,7 +178,7 @@
 
             <div id="tab-payments" class="tab-content" style="display:none;">
                 <div class="payment-modal-sim">
-                    <h4>💳 بوابة مدى وسداد الفيدرالية للدفع الرقمي الموحد</h4>
+                    <h4>💳 بوابة مدى وسداد الرقمية الموحدة</h4>
                     <div class="payment-box-inner">
                         <label>رقم البطاقة (Card Number)</label>
                         <input type="text" placeholder="4000 1234 5678 9010">
