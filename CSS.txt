@@ -1,0 +1,66 @@
+/* التنسيق العام والالوان المعتمدة للمشروع */
+body {
+    background-color: #DFF5E1; /* الأخضر الفاتح المعتمد للثيم */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    width: 350px;
+    margin: 100px auto;
+    background: white; /* اللون الأبيض النقي */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* ظل خفيف لإبراز البطاقة */
+    border-top: 5px solid #0B6623; /* خط علوي بالأخضر الغامق مستوحى من كسوة الروضة الشريفة */
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #0B6623; /* الأخضر الغامق لعنوان التطبيق */
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #145c32;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #198754; /* يتحول اللون عند الضغط للأخضر الزمردي */
+}
+
+button {
+    margin-top: 25px;
+    background: #198754; /* الأخضر الزمردي للمشروع */
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0B6623; /* يتحول لأخضر غامق عند تمرير الماوس */
+}

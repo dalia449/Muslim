@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - تطبيق مُسلم</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="login-container">
+    <h1>مُسلم</h1>
+    <form action="php/login.php" method="POST" onsubmit="return validateLogin()">
+        <label>نوع الهوية</label>
+        <select name="id_type" required>
+            <option value="">اختر نوع الهوية</option>
+            <option value="national">هوية وطنية</option>
+            <option value="iqama">إقامة</option>
+            <option value="visitor">بطاقة زائر</option>
+        </select>
+        
+        <label>رقم الهوية / الإقامة</label>
+        <input type="text" name="id_number" id="idNumber" required>
+        
+        <label>كلمة المرور</label>
+        <input type="password" name="password" id="password" required>
+        
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
