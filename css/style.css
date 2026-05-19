@@ -11,21 +11,117 @@
 ‏:root {
 ‏    --dark-green: #0B6623;      /* الأخضر الغامق القياسي للمنصة */
 ‏    --emerald-green: #198754;   /* الأخضر الزمردي التفاعلي */
-‏    --light-bg: #DFF5E1;        /* الأخضر الفاتح المريح للخلفيات */
+‏    --light-bg: #DFF5E1;        /* الأخضر الفاتح المريح لخلفية الدخول */
 ‏    --white: #ffffff;
 ‏    --text-dark: #1e293b;
-‏    --gold: #D4AF37;            /* التدرج الذهبي للباقات الفاخرة */
+‏    --gold: #D4AF37;            /* التدرج الذهبي للباقات */
 }
 
 ‏body {
-‏    background: linear-gradient(135deg, #f5fff5 0%, #e8f7e8 100%);
+‏    background-color: var(--light-bg);
 ‏    color: var(--text-dark);
 ‏    scroll-behavior: smooth;
-‏    direction: rtl; /* يدعم محاذاة المشروع الكاملة */
+‏    direction: ltr; /* لضمان ثبات اللغات والأيقونات البرمجية */
 }
 
 /* ========================================================================= */
-/* 2. الهيدر الثابت والقوائم العلوية (Fixed Navigation Top Navbar)           */
+/* 2. 🛡️ التنسيق المصلح لصفحة الدخول (FIXED VERTICAL LOGIN INTERFACE)      */
+/* ========================================================================= */
+‏.login-wrapper {
+‏    display: flex;
+‏    justify-content: center;
+‏    align-items: center;
+‏    min-height: 90vh;
+‏    padding: 20px;
+‏    background-color: var(--light-bg);
+}
+
+‏.login-container {
+‏    background: var(--white);
+‏    width: 100%;
+‏    max-width: 420px; /* الحجم الاحترافي لعرض الصندوق بالآيباد */
+‏    padding: 35px;
+‏    border-radius: 20px;
+‏    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+‏    border-top: 6px solid var(--dark-green);
+‏    text-align: center;
+}
+
+‏.logo-area {
+‏    display: flex;
+‏    justify-content: center;
+‏    margin-bottom: 20px;
+}
+
+‏.main-logo-img {
+‏    width: 160px;
+‏    height: auto;
+}
+
+‏.login-container h2 {
+‏    color: var(--dark-green);
+‏    font-size: 24px;
+‏    margin-bottom: 8px;
+‏    font-weight: bold;
+}
+
+/* 🚨 إجبار استمارة الدخول على ترتيب عناصرها عمودياً وتحت بعض بالملي */
+‏.login-container form {
+‏    display: flex !important;
+‏    flex-direction: column !important; /* ترتيب عمودي صارم */
+‏    text-align: left; /* محاذاة العناوين والحقول لليسار لتطابق الانجليزي */
+}
+
+‏.login-container label {
+‏    margin-top: 15px;
+‏    margin-bottom: 6px;
+‏    color: #145c32;
+‏    font-weight: bold;
+‏    font-size: 14px;
+‏    display: block;
+}
+
+‏.login-container input, 
+‏.login-container select {
+‏    width: 100% !important; /* شغل كامل عرض الصندوق */
+‏    padding: 12px 15px;
+‏    border: 2px solid #cbd5e1;
+‏    border-radius: 10px;
+‏    font-size: 15px;
+‏    background-color: var(--white);
+‏    outline: none;
+‏    transition: 0.3s ease;
+‏    display: block;
+‏    margin-bottom: 5px;
+}
+
+‏.login-container input:focus, 
+‏.login-container select:focus {
+‏    border-color: var(--dark-green);
+‏    background-color: #f6fdf7;
+‏    box-shadow: 0 0 8px rgba(11, 102, 35, 0.15);
+}
+
+‏.login-container button[type="submit"] {
+‏    width: 100%;
+‏    margin-top: 25px;
+‏    background-color: var(--emerald-green);
+‏    color: var(--white);
+‏    padding: 14px;
+‏    border: none;
+‏    border-radius: 10px;
+‏    font-size: 16px;
+‏    font-weight: bold;
+‏    cursor: pointer;
+‏    transition: background 0.3s ease;
+}
+
+‏.login-container button[type="submit"]:hover {
+‏    background-color: var(--dark-green);
+}
+
+/* ========================================================================= */
+/* 3. الهيدر الثابت والقوائم العلوية للوحة التحكم                             */
 /* ========================================================================= */
 ‏header {
 ‏    background: var(--dark-green);
@@ -40,22 +136,12 @@
 ‏    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-‏.logo img, .main-logo-img {
-‏    width: 120px;
-‏    height: auto;
-}
-
-‏nav {
-‏    display: flex;
-‏    align-items: center;
-}
-
 ‏nav a {
 ‏    color: var(--white);
 ‏    text-decoration: none;
-‏    margin-right: 18px;
+‏    margin-left: 18px;
 ‏    font-size: 15px;
-‏    transition: 0.3s ease;
+‏    transition: 0.3s;
 }
 
 ‏nav a:hover {
@@ -63,532 +149,26 @@
 }
 
 /* ========================================================================= */
-/* 3. واجهة الواجهة الترحيبية والبنية الهيكلية (Hero & Structure Frames)      */
+/* 4. بنية لوحة الـ Dashboard الجانبية (1:3 Scale Layout Partition)         */
 /* ========================================================================= */
-‏.hero {
-‏    height: 80vh;
-‏    background: linear-gradient(rgba(11, 102, 35, 0.45), rgba(0, 0, 0, 0.7)), 
-‏                url("https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=1400&auto=format&fit=crop");
-‏    background-size: cover;
-‏    background-position: center;
-‏    display: flex;
-‏    justify-content: center;
-‏    align-items: center;
-‏    text-align: center;
-‏    color: var(--white);
-}
-
-‏.overlay h2 {
-‏    font-size: 48px;
-‏    margin-bottom: 20px;
-‏    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-}
-
-‏.overlay p {
-‏    font-size: 18px;
-‏    width: 70%;
-‏    margin: auto;
-‏    line-height: 1.7;
-}
-
-‏.section-title, h2 {
-‏    color: var(--dark-green);
-‏    font-size: 30px;
-‏    margin-top: 20px;
-‏    margin-bottom: 15px;
-‏    text-align: center;
-‏    font-weight: bold;
-}
-
-‏.section-desc { 
-‏    text-align: center; 
-‏    color: #64748b; 
-‏    margin-bottom: 30px; 
-‏    font-size: 15px; 
-}
-
-/* الأزرار العامة وعناصر التفاعل */
-‏button {
-‏    margin-top: 30px;
-‏    padding: 12px 30px;
-‏    background: var(--emerald-green);
-‏    color: var(--white);
-‏    border: none;
-‏    border-radius: 10px;
-‏    font-size: 16px;
-‏    font-weight: bold;
-‏    cursor: pointer;
-‏    transition: 0.3s ease;
-}
-
-‏button:hover {
-‏    background: var(--dark-green);
-}
-
-/* بطاقات الميزات العامة الخفيفة */
-‏.features {
-‏    display: flex;
-‏    justify-content: center;
-‏    gap: 30px;
-‏    padding: 60px 40px;
-‏    flex-wrap: wrap;
-}
-
-/* ========================================================================= */
-/* 4. عداد الطواف التفاعلي ودائرة التقدم (Progress Circle & Tawaf Counter)   */
-/* ========================================================================= */
-‏.tawaf-section, .about-section, .maps-section, .emergency-section, .contact-section, .packages-section, .hotels-section {
-‏    padding: 60px 20px;
-‏    text-align: center;
-}
-
-‏.tawaf-container {
-‏    background: var(--white);
-‏    max-width: 400px;
-‏    margin: auto;
-‏    padding: 35px;
-‏    border-radius: 20px;
-‏    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-‏    text-align: center;
-}
-
-‏.progress-circle {
-‏    width: 180px;
-‏    height: 180px;
-‏    border-radius: 50%;
-‏    background: var(--white);
-‏    border: 8px solid #e2e8f0;
-‏    border-top-color: var(--dark-green);
-‏    margin: 0 auto 20px auto;
-‏    display: flex;
-‏    flex-direction: column;
-‏    justify-content: center;
-‏    align-items: center;
-‏    transition: transform 0.2s ease;
-}
-
-‏#counterDisplay { 
-‏    font-size: 50px; 
-‏    font-weight: bold; 
-‏    color: var(--dark-green); 
-}
-
-‏.counter-controls { 
+‏.dashboard-wrapper { 
 ‏    display: flex; 
-‏    gap: 15px; 
-‏    justify-content: center; 
+‏    min-height: 100vh; 
+‏    background-color: #f4f6f8;
 }
-
-‏.ctrl-btn { 
-‏    padding: 10px 20px; 
-‏    border-radius: 8px; 
-‏    font-weight: bold; 
-‏    border: none; 
-‏    cursor: pointer; 
-‏    transition: 0.3s; 
-}
-
-‏.plus-btn { 
-‏    background: var(--dark-green); 
-‏    color: var(--white); 
-}
-
-‏.reset-btn { 
-‏    background: #cbd5e1; 
-‏    color: #334155; 
-}
-
-‏.status-msg { 
-‏    margin-top: 15px; 
-‏    font-weight: bold; 
-‏    color: #16a34a; 
-}
-
-/* ========================================================================= */
-/* 5. باقات وعروض الحج الملونة (Color-Coded Hajj Packages Tiers)             */
-/* ========================================================================= */
-‏.packages-container { 
-‏    display: flex; 
-‏    max-width: 1000px; 
-‏    margin: auto; 
-‏    gap: 20px; 
-‏    padding: 20px; 
-}
-
-‏.package-gold { 
-‏    background: #FFFDF0; 
-‏    border-top: 6px solid var(--gold); 
-‏    padding: 25px; 
-‏    border-radius: 12px; 
-‏    flex: 1; 
-‏    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
-‏    text-align: right;
-}
-
-‏.package-gold h3 { 
-‏    color: var(--gold); 
-‏    margin-bottom: 10px; 
-}
-
-‏.package-emerald { 
-‏    background: #F0FDF4; 
-‏    border-top: 6px solid var(--dark-green); 
-‏    padding: 25px; 
-‏    border-radius: 12px; 
-‏    flex: 1; 
-‏    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
-‏    text-align: right;
-}
-
-‏.package-emerald h3 { 
-‏    color: var(--dark-green); 
-‏    margin-bottom: 10px; 
-}
-
-‏.price, .price-tag { 
-‏    font-size: 22px; 
-‏    font-weight: bold; 
-‏    color: #0f172a; 
-‏    margin-bottom: 5px; 
-}
-
-/* ========================================================================= */
-/* 6. خريطة تتبع مسارات الحافلات الذكية (Bus Telemetry Interactive Map)        */
-/* ========================================================================= */
-‏.map-container, .transport-map-box { 
-‏    display: flex; 
-‏    max-width: 1100px; 
-‏    margin: auto; 
-‏    gap: 20px; 
-‏    padding: 20px; 
-}
-
-‏.map-container .sidebar { 
-‏    flex: 1; 
-‏    background: var(--white); 
-‏    padding: 20px; 
-‏    border-radius: 12px; 
-‏    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-‏    text-align: right; 
-}
-
-‏.map-container .sidebar h4 { 
-‏    color: var(--dark-green); 
-‏    margin-bottom: 12px; 
-}
-
-‏.fleet-list li { 
-‏    list-style: none; 
-‏    margin-bottom: 10px; 
-‏    font-size: 14px; 
-‏    color: #475569; 
-}
-
-‏.status-active { color: #16a34a; font-weight: bold; }
-‏.status-transit { color: #2563eb; font-weight: bold; }
-‏.status-delayed { color: #dc3545; font-weight: bold; }
-‏.status-standby { color: #4b5563; font-weight: bold; }
-
-‏.map-view, .interactive-map { 
-‏    flex: 3; 
-‏    background: #e2e8f0; 
-‏    height: 300px; 
-‏    border-radius: 12px; 
-‏    border: 1px solid #cbd5e1; 
-‏    position: relative; 
-}
-
-‏.interactive-map {
-‏    background-color: #f1fbf3;
-‏    border: 2px solid #ccecd2;
-‏    padding: 40px;
-‏    display: flex;
-‏    justify-content: space-between;
-‏    align-items: center;
-}
-
-‏.map-node {
-‏    display: flex;
-‏    flex-direction: column;
-‏    align-items: center;
-‏    background: var(--white);
-‏    padding: 15px;
-‏    border-radius: 50%;
-‏    width: 80px;
-‏    height: 80px;
-‏    justify-content: center;
-‏    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-‏    border: 2px solid var(--dark-green);
-‏    z-index: 2;
-}
-
-‏.node-icon { font-size: 28px; }
-‏.node-text { font-size: 12px; font-weight: bold; margin-top: 4px; color: var(--dark-green); }
-
-‏.route-axis { 
-‏    display: flex; 
-‏    justify-content: space-between; 
-‏    padding: 30px; 
-‏    align-items: center; 
-‏    margin-top: 40px; 
-}
-
-‏.location-node { 
-‏    background: var(--dark-green); 
-‏    color: var(--white); 
-‏    padding: 8px 16px; 
-‏    border-radius: 6px; 
-‏    font-weight: bold; 
-‏    font-size: 14px; 
-}
-
-‏.transit-line, .map-route-line { 
-‏    flex: 1; 
-‏    height: 4px; 
-‏    background: var(--dark-green); 
-‏    margin: 0 10px; 
-‏    position: relative; 
-}
-
-‏.map-route-line {
-‏    height: 6px;
-‏    background: repeating-linear-gradient(90deg, #198754, #198754 10px, transparent 10px, transparent 20px);
-}
-
-‏.moving-bus { 
-‏    position: absolute; 
-‏    background: var(--dark-green);
-‏    color: var(--white); 
-‏    padding: 6px 12px;
-‏    border-radius: 20px;
-‏    font-size: 12px; 
-‏    font-weight: bold;
-‏    top: -14px; 
-‏    right: 40%; 
-‏    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-‏    animation: transitMove 6s infinite linear; 
-}
-
-‏@keyframes transitMove { 
-‏    0% { right: 10%; } 
-‏    100% { right: 80%; } 
-}
-
-‏.gps-text { 
-‏    text-align: center; 
-‏    margin-top: 100px; 
-‏    font-size: 13px; 
-‏    color: #475569; 
-‏    font-style: italic; 
-}
-
-/* ========================================================================= */
-/* 7. شبكة الغرف الفندقية ورفع الإيصالات (Hotel Room Inventory & Receipts)     */
-/* ========================================================================= */
-‏.hotel-grid { 
-‏    display: flex; 
-‏    justify-content: center; 
-‏    gap: 20px;
-‏    margin-top: 20px;
-‏    flex-wrap: wrap;
-}
-
-‏.hotel-card, .room-card { 
-‏    background: var(--white); 
-‏    padding: 25px; 
-‏    border-radius: 12px; 
-‏    width: 420px; 
-‏    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-‏    text-align: center; 
-‏    border: 1px solid #e2e8f0; 
-‏    border-top: 4px solid var(--emerald-green);
-}
-
-‏.hotel-img-placeholder, .room-img-box { 
-‏    background: #e8f5e9;
-‏    font-size: 45px; 
-‏    color: var(--dark-green); 
-‏    margin-bottom: 15px; 
-‏    padding: 20px 0;
-‏    border-radius: 10px;
-}
-
-‏.room-status { 
-‏    font-weight: bold; 
-‏    color: #16a34a; 
-‏    font-size: 14px; 
-‏    margin-bottom: 10px; 
-}
-
-‏.discount-btn, .btn-action-success { 
-‏    display: inline-block; 
-‏    background: var(--dark-green); 
-‏    color: var(--white); 
-‏    padding: 10px 20px; 
-‏    text-decoration: none; 
-‏    border-radius: 6px; 
-‏    font-weight: bold; 
-‏    font-size: 14px; 
-‏    transition: 0.3s; 
-‏    border: none;
-‏    cursor: pointer;
-}
-
-‏.discount-btn:hover, .btn-action-success:hover { 
-‏    background: #145c32; 
-}
-
-‏.upload-form { 
-‏    margin-top: 20px; 
-‏    border-top: 1px dashed #cbd5e1; 
-‏    padding-top: 15px; 
-‏    text-align: right; 
-}
-
-‏.upload-form label { 
-‏    font-size: 13px; 
-‏    font-weight: bold; 
-‏    color: #475569; 
-}
-
-‏.upload-form input { 
-‏    width: 100%; 
-‏    margin-top: 8px; 
-}
-
-‏.upload-submit-btn, .btn-action-primary { 
-‏    width: 100%; 
-‏    background: #1e293b; 
-‏    color: var(--white); 
-‏    border: none; 
-‏    padding: 10px; 
-‏    margin-top: 12px; 
-‏    border-radius: 6px; 
-‏    font-weight: bold; 
-‏    cursor: pointer; 
-}
-
-/* ========================================================================= */
-/* 8. بطاقات التصاريح والباركودات (Permits & Secure QR Interface)            */
-/* ========================================================================= */
-‏.permit-container, .permit-card { 
-‏    max-width: 400px; 
-‏    margin: 30px auto; 
-‏    background: var(--white); 
-‏    padding: 30px; 
-‏    border: 2px dashed var(--dark-green); 
-‏    border-radius: 15px; 
-‏    text-align: center; 
-}
-
-‏#barcode_display, .qr-code-placeholder { 
-‏    background: black; 
-‏    color: var(--white); 
-‏    font-family: monospace; 
-‏    font-size: 24px; 
-‏    letter-spacing: 12px; 
-‏    padding: 12px; 
-‏    display: inline-block; 
-‏    margin: 15px 0; 
-‏    font-weight: bold; 
-‏    border-radius: 6px;
-}
-
-‏.qr-code-placeholder {
-‏    padding: 30px 10px;
-‏    font-size: 13px;
-‏    letter-spacing: normal;
-}
-
-‏.serial-no { 
-‏    font-size: 12px; 
-‏    color: #64748b; 
-‏    font-family: monospace; 
-‏    margin-bottom: 15px; 
-}
-
-‏.scan-btn { 
-‏    background: #dc3545; 
-‏    color: var(--white); 
-‏    border: none; 
-‏    padding: 10px 20px; 
-‏    border-radius: 6px; 
-‏    font-weight: bold; 
-‏    cursor: pointer; 
-‏    transition: 0.3s; 
-}
-
-‏.scan-btn:hover { 
-‏    background: #bd2130; 
-}
-
-/* ========================================================================= */
-/* 9. بوابات الحقول وتنسيق لوحة التحكم (Forms, Login, & Dashboard Sidebar)   */
-/* ========================================================================= */
-‏.login-wrapper {
-‏    display: flex;
-‏    justify-content: center;
-‏    align-items: center;
-‏    min-height: 100vh;
-}
-
-‏.login-container, .contact-container, .info-box-simulation, .payment-modal-sim { 
-‏    width: 420px; 
-‏    margin: auto; 
-‏    background: var(--white); 
-‏    padding: 35px; 
-‏    border-radius: 15px; 
-‏    box-shadow: 0 10px 25px rgba(0,0,0,0.06); 
-‏    text-align: right; 
-}
-
-‏.login-container {
-‏    border-top: 6px solid var(--dark-green);
-}
-
-‏form { 
-‏    display: flex; 
-‏    flex-direction: column; 
-}
-
-‏label { 
-‏    margin-top: 12px; 
-‏    margin-bottom: 5px; 
-‏    color: #145c32; 
-‏    font-weight: bold; 
-‏    font-size: 14px; 
-}
-
-‏input, select, textarea { 
-‏    padding: 11px; 
-‏    border: 2px solid #cbd5e1; 
-‏    border-radius: 8px; 
-‏    background: #f8fafc; 
-‏    font-size: 14px; 
-‏    outline: none;
-‏    transition: 0.3s ease;
-}
-
-‏input:focus, select:focus, textarea:focus { 
-‏    border-color: var(--dark-green); 
-‏    background: var(--white); 
-}
-
-/* بنية لوحة الـ Dashboard الجانبية */
-‏.dashboard-wrapper { display: flex; min-height: 100vh; }
 
 ‏.dashboard-wrapper .sidebar {
-‏    width: 290px;
+‏    width: 280px;
 ‏    background-color: var(--dark-green);
 ‏    color: var(--white);
 ‏    display: flex;
 ‏    flex-direction: column;
 ‏    justify-content: space-between;
-‏    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+‏    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
 }
 
 ‏.sidebar-brand {
-‏    font-size: 22px;
+‏    font-size: 20px;
 ‏    text-align: center;
 ‏    padding: 25px 0;
 ‏    border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -613,64 +193,93 @@
 }
 
 ‏.sidebar-user-avatar {
-‏    padding: 20px;
+‏    padding: 15px;
 ‏    background-color: rgba(0,0,0,0.15);
 ‏    display: flex;
 ‏    align-items: center;
-‏    gap: 12px;
+‏    gap: 10px;
 ‏    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-‏.main-content { flex: 1; background-color: #f4f6f8; display: flex; flex-direction: column; }
-‏.top-bar {
-‏    background: var(--white); padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-‏.top-bar h3 { margin: 0; color: var(--dark-green); font-size: 18px; }
+‏.avatar-icon { font-size: 24px; }
+‏.avatar-name { font-size: 13px; font-weight: bold; }
 
-/* بطاقات لوحة النظرة العامة الداعمة */
-‏.dashboard-cards { display: flex; gap: 20px; margin-bottom: 30px; }
-‏.dashboard-cards .card {
-‏    background: var(--white); flex: 1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-left: 6px solid var(--emerald-green); border-right: none;
+‏.main-content { flex: 1; display: flex; flex-direction: column; background: #f4f6f8; }
+‏.top-bar {
+‏    background: var(--white); padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 /* ========================================================================= */
-/* 10. الفوتر ومواقع التواصل والتجاوب (Footer & Responsive Framework)         */
+/* 5. التبويبات والمكونات التفاعلية (Tawaf, Packages, Map & Grid)           */
+/* ========================================================================= */
+‏.tab-content { padding: 25px; }
+
+‏.info-box-simulation {
+‏    background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 4px solid var(--dark-green); margin-bottom: 25px;
+}
+
+‏.dashboard-cards { display: flex; gap: 20px; }
+‏.dashboard-cards .card {
+‏    background: var(--white); flex: 1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-left: 6px solid var(--emerald-green);
+}
+‏.dashboard-cards .card h4 { margin-bottom: 8px; color: #64748b; font-size: 14px; }
+‏.dashboard-cards .card p { font-size: 20px; font-weight: bold; color: var(--dark-green); }
+
+/* عداد الأشواط الدائري الفخم */
+‏.tawaf-container {
+‏    background: var(--white); max-width: 400px; margin: 20px auto; padding: 35px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center;
+}
+‏.progress-circle {
+‏    width: 170px; height: 170px; border-radius: 50%; background: var(--white); border: 8px solid #e2e8f0; border-top-color: var(--dark-green); margin: 0 auto 20px auto; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+‏#counterDisplay { font-size: 48px; font-weight: bold; color: var(--dark-green); }
+‏.counter-controls { display: flex; gap: 15px; justify-content: center; }
+
+/* الباقات الملونة */
+‏.packages-container { display: flex; gap: 20px; margin-top: 15px; }
+‏.package-gold { background: #FFFDF0; border-top: 6px solid var(--gold); padding: 25px; border-radius: 12px; flex: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+‏.package-emerald { background: #F0FDF4; border-top: 6px solid var(--dark-green); padding: 25px; border-radius: 12px; flex: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+
+/* خريطة تتبع الحافلات الخمسة الدسمة للآيباد */
+‏.transport-map-box { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+‏.interactive-map {
+‏    background-color: #f1fbf3; border: 2px solid #ccecd2; padding: 35px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; position: relative;
+}
+‏.map-node { display: flex; flex-direction: column; align-items: center; background: var(--white); padding: 12px; border-radius: 50%; width: 75px; height: 75px; justify-content: center; border: 2px solid var(--dark-green); z-index: 2; }
+‏.map-route-line { flex: 1; height: 5px; background: repeating-linear-gradient(90deg, #198754, #198754 10px, transparent 10px, transparent 20px); position: relative; margin: 0 -5px; z-index: 1; }
+‏.moving-bus { position: absolute; background: var(--dark-green); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: bold; top: -13px; right: 45%; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+
+/* شبكة الفنادق وتأكيد الرفع والتصريح لمرة واحدة */
+‏.hotel-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+‏.room-card, .permit-card { background: var(--white); padding: 25px; border-radius: 12px; width: 100%; max-width: 360px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; text-align: center; }
+‏.room-card { border-top: 4px solid var(--emerald-green); }
+‏.permit-card { border: 2px dashed var(--dark-green); }
+‏.room-img-box { background: #e8f5e9; font-size: 40px; padding: 15px 0; border-radius: 10px; margin-bottom: 12px; color: var(--dark-green); }
+‏#barcode_display { background: black; color: var(--white); font-family: monospace; font-size: 22px; letter-spacing: 10px; padding: 10px; display: inline-block; margin: 15px 0; font-weight: bold; }
+‏.scan-btn { background: #dc3545; color: var(--white); border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+/* استمارة اتصل بنا الفخمة (تركيز الدكتور) */
+‏.contact-container { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+‏.contact-container form { display: flex; flex-direction: column; text-align: left; }
+
+/* ========================================================================= */
+/* 6. الفوتر الشامل والتوافقية والـ Media Queries                           */
 /* ========================================================================= */
 ‏footer { 
 ‏    background: var(--dark-green); 
 ‏    color: var(--white); 
 ‏    text-align: center; 
 ‏    padding: 25px; 
-‏    margin-top: 40px; 
+‏    font-size: 14px;
+‏    clear: both;
 }
 
-‏.social-icons { 
-‏    margin-top: 12px; 
-‏    display: flex; 
-‏    justify-content: center; 
-‏    gap: 15px; 
-}
+‏.social-icons { margin-top: 12px; display: flex; justify-content: center; gap: 15px; }
+‏.social-icons a { color: var(--white); font-size: 18px; }
 
-‏.social-icons a { 
-‏    color: var(--white); 
-‏    font-size: 18px; 
-‏    transition: 0.3s; 
-}
-
-‏.social-icons a:hover { 
-‏    color: #b7ffcb; 
-‏    transform: scale(1.1); 
-}
-
-/* التحكم بالتجاوب والمرونة الشاملة للهواتف والآيباد */
 ‏@media(max-width: 768px) {
-‏    header { flex-direction: column; gap: 10px; padding: 15px; }
-‏    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-‏    nav a { margin-right: 0; margin-left: 10px; font-size: 13px; }
-‏    .overlay h2 { font-size: 30px; }
-‏    .overlay p { width: 90%; font-size: 15px; }
-‏    .login-container, .contact-container, .map-container, .hotel-card, .packages-container, .dashboard-cards, .dashboard-wrapper { 
-‏        width: 95%; 
-‏        flex-direction: column; 
-    }
+‏    .dashboard-wrapper { flex-direction: column; }
+‏    .dashboard-wrapper .sidebar { width: 100%; }
+‏    .dashboard-cards, .packages-container, .hotel-grid { flex-direction: column; }
+‏    .login-container, .contact-container, .room-card, .permit-card { max-width: 100%; }
 }
