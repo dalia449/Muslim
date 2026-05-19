@@ -4,7 +4,7 @@
 ‏    <meta charset="UTF-8">
 ‏    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ‏    <title>Muslim - Smart Hajj & Umrah Companion</title>
-‏    <link rel="stylesheet" href="style.css">
+‏    <link rel="stylesheet" href="css/style.css">
 ‏    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 ‏</head>
 ‏<body>
@@ -15,7 +15,7 @@
 ‏            <img src="logo.png.PNG" alt="Muslim Logo" class="main-logo-img">
 ‏        </div>
 ‏        <h2><i class="fa-solid fa-shield-halved"></i> Secured Login Portal</h2>
-‏        <p style="font-size: 11px; text-align: center; color: #64748b; margin-bottom: 15px;">Use Mock ID: 12345678910 & Pass: 1234</p>
+‏        <p style="font-size: 12px; text-align: center; color: #64748b; margin-bottom: 15px;">Use Mock ID: 12345678910 & Pass: 1234</p>
         
 ‏        <form id="loginForm" onsubmit="return handleLogin(event)">
 ‏            <label><i class="fa-solid fa-id-card"></i> ID Type</label>
@@ -57,17 +57,17 @@
 ‏        <div class="sidebar-user-avatar">
 ‏            <div class="avatar-icon"><i class="fa-solid fa-circle-user"></i></div>
 ‏            <div class="avatar-name">
-‏                <p style="margin:0; font-size:12px; color:#b7ffcb;">Logged in as:</p>
+‏                <p style="margin:0; font-size:11px; color:#b7ffcb;">Logged in as:</p>
 ‏                <span style="font-size:13px;">Pilgrim Profile</span>
 ‏            </div>
-‏            <a href="#" onclick="logout()" style="margin-left: auto; color: #ffbcbc;" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+‏            <a href="#" onclick="logout()" style="margin-left: auto; color: #ffbcbc;"><i class="fa-solid fa-right-from-bracket"></i></a>
 ‏        </div>
 ‏    </aside>
 
 ‏    <main class="main-content">
 ‏        <div class="top-bar">
 ‏            <h3>Smart Pilgrim Control Center</h3>
-‏            <div class="user-info"><i class="fa-solid fa-clock"></i> Academic Season 2026</div>
+‏            <div class="user-info"><i class="fa-solid fa-clock"></i> Season 2026</div>
 ‏        </div>
 
 ‏        <div class="content-body">
@@ -77,13 +77,13 @@
 ‏                    <h2>Welcome to Muslim Companion Portal!</h2>
 ‏                    <p>Select any technical service from the sidebar menu to simulate real-time operations, verify tracking modules, or manage your spiritual rituals.</p>
 ‏                </div>
-‏                <div class="dashboard-cards" style="margin-top: 20px;">
+‏                <div class="dashboard-cards">
 ‏                    <div class="card">
 ‏                        <h4>Tawaf Rounds</h4>
 ‏                        <p id="overviewTawaf">0 / 7 Completed</p>
 ‏                    </div>
 ‏                    <div class="card">
-‏                        <h4>Active Fleet status</h4>
+‏                        <h4>Active Fleet Status</h4>
 ‏                        <p>5 Shuttles Online</p>
 ‏                    </div>
 ‏                </div>
@@ -92,7 +92,6 @@
 ‏            <div id="tab-tawaf" class="tab-content" style="display: none;">
 ‏                <div class="tawaf-container">
 ‏                    <h2>Dynamic Tawaf Counter</h2>
-‏                    <p class="section-desc">Keep track of your circumambulation rounds with instant physical response metrics.</p>
 ‏                    <div class="progress-circle" id="progressCircle">
 ‏                        <span id="counterDisplay">0</span>
 ‏                        <p>Rounds</p>
@@ -101,7 +100,7 @@
 ‏                        <button onclick="incrementTawaf()" class="ctrl-btn plus-btn"><i class="fa-solid fa-plus"></i> Add Round</button>
 ‏                        <button onclick="resetTawaf()" class="ctrl-btn reset-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
 ‏                    </div>
-‏                    <div id="tawafStatus" class="status-msg">Click 'Add Round' to log structural telemetry.</div>
+‏                    <div id="tawafStatus" class="status-msg">Click 'Add Round' to start counting.</div>
 ‏                </div>
 ‏            </div>
 
@@ -129,7 +128,7 @@
 ‏                            <div class="node-text">Madinah</div>
 ‏                        </div>
 ‏                        <div class="map-route-line">
-‏                            <div class="moving-bus"><i class="fa-solid fa-bus"></i> Telemetry Active</div>
+‏                            <div class="moving-bus"><i class="fa-solid fa-bus"></i> Tracking Fleet...</div>
 ‏                        </div>
 ‏                        <div class="map-node">
 ‏                            <div class="node-icon" style="color:#D4AF37;"><i class="fa-solid fa-kaaba"></i></div>
@@ -138,60 +137,58 @@
 ‏                    </div>
 ‏                </div>
 ‏                <div class="dashboard-cards" style="margin-top:20px;">
-‏                    <div class="card" style="border-right-color:#2563eb;">
-‏                        <h4>Active Fleet Records</h4>
-‏                        <p style="font-size:14px; font-weight:normal; margin-top:5px; color:#475569;">
-‏                            Shuttle #01 & #02: Active | Shuttle #03: In Transit | Shuttle #04: Delayed | Shuttle #05: Standby
+‏                    <div class="card">
+‏                        <h4>Fleet Registry Status</h4>
+‏                        <p style="font-size:14px; font-weight:normal; color:#475569;">
+‏                            Bus 1 & 2: Active | Bus 3: In Transit | Bus 4: Delayed | Bus 5: Standby
 ‏                        </p>
 ‏                    </div>
 ‏                </div>
 ‏            </div>
 
 ‏            <div id="tab-hotels" class="tab-content" style="display: none;">
-‏                <h2>Affiliated Hotel Controls & Digital Permits</h2>
+‏                <h2>Affiliated Hotels & Single-Use Digital Permits</h2>
 ‏                <div class="hotel-grid">
 ‏                    <div class="room-card">
 ‏                        <div class="room-img-box"><i class="fa-solid fa-building-circle-check"></i></div>
 ‏                        <h3>Makkah Clock Royal Tower</h3>
-‏                        <p class="room-status"><i class="fa-solid fa-square-poll-vertical"></i> 14 Accommodation Lots Left</p>
-‏                        <a href="https://www.fairmont.com/makkah/?ref=muslim_discount15" target="_blank" class="discount-btn">Go to Fairmont External Site (15% Discount Applied)</a>
+‏                        <p class="room-status">14 Accommodation Lots Left</p>
+‏                        <a href="https://www.fairmont.com/makkah/?ref=muslim_discount15" target="_blank" class="discount-btn">Book with 15% Discount</a>
                         
 ‏                        <form action="index.php" method="POST" enctype="multipart/form-data" class="upload-form">
-‏                            <label><i class="fa-solid fa-cloud-arrow-up"></i> Upload External Booking Receipt to Confirm Integration:</label>
+‏                            <label><i class="fa-solid fa-cloud-arrow-up"></i> Upload Booking Receipt to Confirm:</label>
 ‏                            <input type="file" name="hotel_receipt" required style="margin-top:10px;">
 ‏                            <input type="hidden" name="id_hidden" value="12345678910">
-‏                            <button type="submit" name="upload_receipt_btn" class="upload-submit-btn">Verify inside Muslim File Structure</button>
+‏                            <button type="submit" name="upload_receipt_btn" class="upload-submit-btn">Verify inside Muslim</button>
 ‏                        </form>
 ‏                    </div>
 
 ‏                    <div class="permit-card">
 ‏                        <h3>Ministry Digital Permit</h3>
-‏                        <p style="font-size:12px; color:#64748b;">Single-Use Security Token Layer</p>
 ‏                        <div id="barcode_display">|||*12345678910*|||</div>
 ‏                        <p class="serial-no">Serial: MSLM-2026-992172</p>
-                        
 ‏                        <form action="index.php" method="POST">
 ‏                            <input type="hidden" name="permit_serial_check" value="MSLM-2026-992172">
-‏                            <button type="submit" name="scan_permit_btn" class="scan-btn"><i class="fa-solid fa-qrcode"></i> Scan Code (Halt After Single-Use)</button>
+‏                            <button type="submit" name="scan_permit_btn" class="scan-btn">Scan Code (Single-Use Only)</button>
 ‏                        </form>
 ‏                    </div>
 ‏                </div>
 ‏            </div>
 
 ‏            <div id="tab-contact" class="tab-content" style="display: none;">
-‏                <div class="contact-container" style="width:100%; max-width:600px;">
+‏                <div class="contact-container">
 ‏                    <h2><i class="fa-solid fa-paper-plane"></i> Academic Contact & Support Form</h2>
 ‏                    <form name="contactForm" action="index.php" method="POST" onsubmit="return validateContactForm(event)">
 ‏                        <label>Full Name</label>
-‏                        <input type="text" name="name" id="contactName" placeholder="Enter your official full name" required>
+‏                        <input type="text" name="name" id="contactName" placeholder="Enter full name" required>
 
 ‏                        <label>Email Address</label>
 ‏                        <input type="email" name="email" id="contactEmail" placeholder="student@university.edu" required>
 
-‏                        <label>Message Payload Text</label>
-‏                        <textarea name="message" id="contactMessage" rows="4" placeholder="Write full inquiry description here for MySQL logging extraction..." required></textarea>
+‏                        <label>Message Payload</label>
+‏                        <textarea name="message" id="contactMessage" rows="4" placeholder="Write inquiry here for MySQL entry..." required></textarea>
 
-‏                        <button type="submit" name="submit_contact">Submit Message Pipeline</button>
+‏                        <button type="submit" name="submit_contact">Submit Message</button>
 ‏                    </form>
 ‏                </div>
 ‏            </div>
@@ -200,15 +197,6 @@
 ‏    </main>
 ‏</div>
 
-‏<footer style="background:#0B6623; color:white; text-align:center; padding:15px; margin-top:20px; font-size:14px;">
-‏    <p>© 2026 Muslim Platform Manuscript - All Academic Grading Rights Reserved.</p>
-‏    <div class="social-icons" style="margin-top:10px; display:flex; justify-content:center; gap:15px;">
-‏        <a href="https://twitter.com" target="_blank" style="color:white;"><i class="fa-brands fa-x-twitter"></i></a>
-‏        <a href="https://instagram.com" target="_blank" style="color:white;"><i class="fa-brands fa-instagram"></i></a>
-‏        <a href="https://linkedin.com" target="_blank" style="color:white;"><i class="fa-brands fa-linkedin-in"></i></a>
-‏    </div>
-‏</footer>
-
-‏<script src="script.js"></script>
+‏<script src="js/script.js"></script>
 ‏</body>
 ‏</html>
