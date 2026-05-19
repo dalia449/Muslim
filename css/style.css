@@ -1,285 +1,188 @@
-/* ========================================================================= */
-/* 1. نظام التصفير العام والثيم والألوان المعتمدة (Global Reset & Themes)      */
-/* ========================================================================= */
 * {
 ‏    margin: 0;
 ‏    padding: 0;
 ‏    box-sizing: border-box;
-‏    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+‏    font-family: 'Segoe UI', sans-serif;
 }
 
 ‏:root {
-‏    --dark-green: #0B6623;      /* الأخضر الغامق القياسي للمنصة */
-‏    --emerald-green: #198754;   /* الأخضر الزمردي التفاعلي */
-‏    --light-bg: #DFF5E1;        /* الأخضر الفاتح المريح لخلفية الدخول */
+‏    --dark-green: #0B6623;
+‏    --emerald-green: #198754;
+‏    --light-bg: #DFF5E1;
 ‏    --white: #ffffff;
 ‏    --text-dark: #1e293b;
-‏    --gold: #D4AF37;            /* التدرج الذهبي للباقات */
+‏    --gold: #D4AF37;
 }
 
 ‏body {
 ‏    background-color: var(--light-bg);
 ‏    color: var(--text-dark);
-‏    scroll-behavior: smooth;
-‏    direction: ltr; /* لضمان ثبات اللغات والأيقونات البرمجية */
 }
 
-/* ========================================================================= */
-/* 2. 🛡️ التنسيق المصلح لصفحة الدخول (FIXED VERTICAL LOGIN INTERFACE)      */
-/* ========================================================================= */
+/* واجهة تسجيل الدخول الاحترافية المترابطة عمودياً */
 ‏.login-wrapper {
 ‏    display: flex;
 ‏    justify-content: center;
 ‏    align-items: center;
-‏    min-height: 90vh;
-‏    padding: 20px;
+‏    min-height: 100vh;
 ‏    background-color: var(--light-bg);
 }
 
 ‏.login-container {
 ‏    background: var(--white);
 ‏    width: 100%;
-‏    max-width: 420px; /* الحجم الاحترافي لعرض الصندوق بالآيباد */
+‏    max-width: 400px;
 ‏    padding: 35px;
 ‏    border-radius: 20px;
-‏    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+‏    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 ‏    border-top: 6px solid var(--dark-green);
 ‏    text-align: center;
 }
 
-‏.logo-area {
-‏    display: flex;
-‏    justify-content: center;
-‏    margin-bottom: 20px;
+‏.logo-area img {
+‏    width: 150px;
+‏    margin-bottom: 15px;
 }
 
-‏.main-logo-img {
-‏    width: 160px;
-‏    height: auto;
-}
-
-‏.login-container h2 {
-‏    color: var(--dark-green);
-‏    font-size: 24px;
-‏    margin-bottom: 8px;
-‏    font-weight: bold;
-}
-
-/* 🚨 إجبار استمارة الدخول على ترتيب عناصرها عمودياً وتحت بعض بالملي */
 ‏.login-container form {
 ‏    display: flex !important;
-‏    flex-direction: column !important; /* ترتيب عمودي صارم */
-‏    text-align: left; /* محاذاة العناوين والحقول لليسار لتطابق الانجليزي */
+‏    flex-direction: column !important; /* إجبار العناصر على التراص العمودي */
+‏    text-align: left;
 }
 
-‏.login-container label {
-‏    margin-top: 15px;
-‏    margin-bottom: 6px;
+‏label {
+‏    margin-top: 12px;
+‏    margin-bottom: 5px;
 ‏    color: #145c32;
 ‏    font-weight: bold;
-‏    font-size: 14px;
-‏    display: block;
+‏    font-size: 13px;
 }
 
-‏.login-container input, 
-‏.login-container select {
-‏    width: 100% !important; /* شغل كامل عرض الصندوق */
-‏    padding: 12px 15px;
+‏input, select, textarea {
+‏    width: 100%;
+‏    padding: 11px 14px;
 ‏    border: 2px solid #cbd5e1;
-‏    border-radius: 10px;
-‏    font-size: 15px;
-‏    background-color: var(--white);
+‏    border-radius: 8px;
+‏    font-size: 14px;
 ‏    outline: none;
-‏    transition: 0.3s ease;
-‏    display: block;
+‏    background: #f8fafc;
 ‏    margin-bottom: 5px;
 }
 
-‏.login-container input:focus, 
-‏.login-container select:focus {
+‏input:focus, select:focus, textarea:focus {
 ‏    border-color: var(--dark-green);
-‏    background-color: #f6fdf7;
-‏    box-shadow: 0 0 8px rgba(11, 102, 35, 0.15);
+‏    background: var(--white);
 }
 
-‏.login-container button[type="submit"] {
+‏button {
 ‏    width: 100%;
-‏    margin-top: 25px;
+‏    padding: 12px;
 ‏    background-color: var(--emerald-green);
 ‏    color: var(--white);
-‏    padding: 14px;
 ‏    border: none;
-‏    border-radius: 10px;
-‏    font-size: 16px;
+‏    border-radius: 8px;
+‏    font-size: 15px;
 ‏    font-weight: bold;
 ‏    cursor: pointer;
-‏    transition: background 0.3s ease;
+‏    margin-top: 15px;
 }
 
-‏.login-container button[type="submit"]:hover {
+‏button:hover {
 ‏    background-color: var(--dark-green);
 }
 
-/* ========================================================================= */
-/* 3. الهيدر الثابت والقوائم العلوية للوحة التحكم                             */
-/* ========================================================================= */
-‏header {
-‏    background: var(--dark-green);
-‏    color: var(--white);
+/* هيكلية لوحة التحكم والـ Sidebar للآيباد */
+‏.dashboard-wrapper {
 ‏    display: flex;
-‏    justify-content: space-between;
-‏    align-items: center;
-‏    padding: 15px 40px;
-‏    position: sticky;
-‏    top: 0;
-‏    z-index: 1000;
-‏    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+‏    min-height: 100vh;
 }
 
-‏nav a {
-‏    color: var(--white);
-‏    text-decoration: none;
-‏    margin-left: 18px;
-‏    font-size: 15px;
-‏    transition: 0.3s;
-}
-
-‏nav a:hover {
-‏    color: #b7ffcb;
-}
-
-/* ========================================================================= */
-/* 4. بنية لوحة الـ Dashboard الجانبية (1:3 Scale Layout Partition)         */
-/* ========================================================================= */
-‏.dashboard-wrapper { 
-‏    display: flex; 
-‏    min-height: 100vh; 
-‏    background-color: #f4f6f8;
-}
-
-‏.dashboard-wrapper .sidebar {
-‏    width: 280px;
+‏.sidebar {
+‏    width: 270px;
 ‏    background-color: var(--dark-green);
 ‏    color: var(--white);
 ‏    display: flex;
 ‏    flex-direction: column;
 ‏    justify-content: space-between;
-‏    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
 }
 
 ‏.sidebar-brand {
 ‏    font-size: 20px;
+‏    font-weight: bold;
 ‏    text-align: center;
 ‏    padding: 25px 0;
 ‏    border-bottom: 1px solid rgba(255,255,255,0.1);
-‏    font-weight: bold;
 }
 
-‏.sidebar-menu { list-style: none; padding: 0; margin: 0; flex: 1; }
+‏.sidebar-menu { list-style: none; padding: 0; }
 ‏.sidebar-menu li a {
 ‏    display: block;
 ‏    color: #e6f7ec;
-‏    padding: 16px 25px;
+‏    padding: 15px 20px;
 ‏    text-decoration: none;
-‏    font-size: 15px;
-‏    transition: all 0.3s;
+‏    font-size: 14px;
 }
 
 ‏.sidebar-menu li.active a, .sidebar-menu li a:hover {
 ‏    background-color: var(--emerald-green);
-‏    color: var(--white);
-‏    padding-left: 35px;
 ‏    border-left: 5px solid var(--white);
+‏    padding-left: 25px;
 }
 
 ‏.sidebar-user-avatar {
 ‏    padding: 15px;
-‏    background-color: rgba(0,0,0,0.15);
+‏    background: rgba(0,0,0,0.15);
 ‏    display: flex;
 ‏    align-items: center;
 ‏    gap: 10px;
-‏    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-‏.avatar-icon { font-size: 24px; }
-‏.avatar-name { font-size: 13px; font-weight: bold; }
+‏.main-content {
+‏    flex: 1;
+‏    background-color: #f4f6f8;
+‏    display: flex;
+‏    flex-direction: column;
+}
 
-‏.main-content { flex: 1; display: flex; flex-direction: column; background: #f4f6f8; }
 ‏.top-bar {
-‏    background: var(--white); padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+‏    background: var(--white);
+‏    padding: 15px 30px;
+‏    display: flex;
+‏    justify-content: space-between;
+‏    align-items: center;
+‏    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
-/* ========================================================================= */
-/* 5. التبويبات والمكونات التفاعلية (Tawaf, Packages, Map & Grid)           */
-/* ========================================================================= */
+/* تبويبات لوحة التحكم وبطاقات التقدم */
 ‏.tab-content { padding: 25px; }
+‏.info-box-simulation { background: white; padding: 20px; border-radius: 12px; border-top: 4px solid var(--dark-green); margin-bottom: 20px; }
+‏.dashboard-cards { display: flex; gap: 15px; }
+‏.card { background: white; flex: 1; padding: 18px; border-radius: 10px; border-left: 5px solid var(--emerald-green); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 
-‏.info-box-simulation {
-‏    background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 4px solid var(--dark-green); margin-bottom: 25px;
-}
+/* العداد الدائري الفخم للطواف */
+‏.tawaf-container { background: white; max-width: 360px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
+‏.progress-circle { width: 150px; height: 150px; border-radius: 50%; border: 6px solid #e2e8f0; border-top-color: var(--dark-green); margin: 0 auto 20px auto; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+‏#counterDisplay { font-size: 44px; font-weight: bold; color: var(--dark-green); }
+‏.counter-controls { display: flex; gap: 10px; }
 
-‏.dashboard-cards { display: flex; gap: 20px; }
-‏.dashboard-cards .card {
-‏    background: var(--white); flex: 1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-left: 6px solid var(--emerald-green);
-}
-‏.dashboard-cards .card h4 { margin-bottom: 8px; color: #64748b; font-size: 14px; }
-‏.dashboard-cards .card p { font-size: 20px; font-weight: bold; color: var(--dark-green); }
+/* باقات وعروض الحج ومسارات النقل */
+‏.packages-container { display: flex; gap: 15px; }
+‏.package-gold { background: #FFFDF0; border-top: 5px solid var(--gold); padding: 20px; border-radius: 10px; flex: 1; }
+‏.package-emerald { background: #F0FDF4; border-top: 5px solid var(--dark-green); padding: 20px; border-radius: 10px; flex: 1; }
 
-/* عداد الأشواط الدائري الفخم */
-‏.tawaf-container {
-‏    background: var(--white); max-width: 400px; margin: 20px auto; padding: 35px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center;
-}
-‏.progress-circle {
-‏    width: 170px; height: 170px; border-radius: 50%; background: var(--white); border: 8px solid #e2e8f0; border-top-color: var(--dark-green); margin: 0 auto 20px auto; display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-‏#counterDisplay { font-size: 48px; font-weight: bold; color: var(--dark-green); }
-‏.counter-controls { display: flex; gap: 15px; justify-content: center; }
+‏.interactive-map { background-color: #f1fbf3; border: 2px solid #ccecd2; padding: 35px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+‏.map-node { background: white; padding: 10px; border-radius: 50%; width: 70px; height: 70px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid var(--dark-green); z-index: 2; }
+‏.map-route-line { flex: 1; height: 4px; background: repeating-linear-gradient(90deg, #198754, #198754 10px, transparent 10px, transparent 20px); position: relative; }
+‏.moving-bus { position: absolute; background: var(--dark-green); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; top: -11px; right: 45%; animation: moveBus 5s infinite linear; }
+‏@keyframes moveBus { 0% { right: 10%; } 100% { right: 80%; } }
 
-/* الباقات الملونة */
-‏.packages-container { display: flex; gap: 20px; margin-top: 15px; }
-‏.package-gold { background: #FFFDF0; border-top: 6px solid var(--gold); padding: 25px; border-radius: 12px; flex: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-‏.package-emerald { background: #F0FDF4; border-top: 6px solid var(--dark-green); padding: 25px; border-radius: 12px; flex: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-
-/* خريطة تتبع الحافلات الخمسة الدسمة للآيباد */
-‏.transport-map-box { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-‏.interactive-map {
-‏    background-color: #f1fbf3; border: 2px solid #ccecd2; padding: 35px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; position: relative;
-}
-‏.map-node { display: flex; flex-direction: column; align-items: center; background: var(--white); padding: 12px; border-radius: 50%; width: 75px; height: 75px; justify-content: center; border: 2px solid var(--dark-green); z-index: 2; }
-‏.map-route-line { flex: 1; height: 5px; background: repeating-linear-gradient(90deg, #198754, #198754 10px, transparent 10px, transparent 20px); position: relative; margin: 0 -5px; z-index: 1; }
-‏.moving-bus { position: absolute; background: var(--dark-green); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: bold; top: -13px; right: 45%; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-
-/* شبكة الفنادق وتأكيد الرفع والتصريح لمرة واحدة */
-‏.hotel-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
-‏.room-card, .permit-card { background: var(--white); padding: 25px; border-radius: 12px; width: 100%; max-width: 360px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; text-align: center; }
-‏.room-card { border-top: 4px solid var(--emerald-green); }
-‏.permit-card { border: 2px dashed var(--dark-green); }
-‏.room-img-box { background: #e8f5e9; font-size: 40px; padding: 15px 0; border-radius: 10px; margin-bottom: 12px; color: var(--dark-green); }
-‏#barcode_display { background: black; color: var(--white); font-family: monospace; font-size: 22px; letter-spacing: 10px; padding: 10px; display: inline-block; margin: 15px 0; font-weight: bold; }
-‏.scan-btn { background: #dc3545; color: var(--white); border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-
-/* استمارة اتصل بنا الفخمة (تركيز الدكتور) */
-‏.contact-container { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-‏.contact-container form { display: flex; flex-direction: column; text-align: left; }
-
-/* ========================================================================= */
-/* 6. الفوتر الشامل والتوافقية والـ Media Queries                           */
-/* ========================================================================= */
-‏footer { 
-‏    background: var(--dark-green); 
-‏    color: var(--white); 
-‏    text-align: center; 
-‏    padding: 25px; 
-‏    font-size: 14px;
-‏    clear: both;
-}
-
-‏.social-icons { margin-top: 12px; display: flex; justify-content: center; gap: 15px; }
-‏.social-icons a { color: var(--white); font-size: 18px; }
+‏.hotel-grid { display: flex; gap: 15px; justify-content: center; }
+‏.room-card, .permit-card { background: white; padding: 20px; border-radius: 10px; flex: 1; max-width: 340px; border: 1px solid #e2e8f0; text-align: center; }
+‏.discount-btn { display: inline-block; background: var(--dark-green); color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 13px; margin-top: 10px; }
+‏#barcode_display { background: black; color: white; font-family: monospace; font-size: 20px; letter-spacing: 8px; padding: 8px; display: inline-block; margin: 10px 0; }
 
 ‏@media(max-width: 768px) {
 ‏    .dashboard-wrapper { flex-direction: column; }
-‏    .dashboard-wrapper .sidebar { width: 100%; }
+‏    .sidebar { width: 100%; }
 ‏    .dashboard-cards, .packages-container, .hotel-grid { flex-direction: column; }
-‏    .login-container, .contact-container, .room-card, .permit-card { max-width: 100%; }
 }
