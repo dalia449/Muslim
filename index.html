@@ -3,141 +3,21 @@
 ‏<head>
 ‏    <meta charset="UTF-8">
 ‏    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‏    <title>Muslim - Integrated Hajj & Umrah Platform</title>
+‏    <title>Muslim - Smart Hajj & Umrah Companion</title>
 ‏    <link rel="stylesheet" href="style.css">
 ‏    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 ‏</head>
 ‏<body>
 
-‏<header>
-‏    <div class="logo">
-‏        <img src="logo.png.PNG" alt="Muslim Logo">
-‏    </div>
-‏    <nav>
-‏        <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
-‏        <a href="#about"><i class="fa-solid fa-circle-info"></i> About</a>
-‏        <a href="#tawaf"><i class="fa-solid fa-kaaba"></i> Tawaf</a>
-‏        <a href="#packages"><i class="fa-solid fa-cubes"></i> Packages</a>
-‏        <a href="#maps"><i class="fa-solid fa-bus"></i> Bus Tracking</a>
-‏        <a href="#hotels"><i class="fa-solid fa-hotel"></i> Hotels</a>
-‏        <a href="#permit"><i class="fa-solid fa-id-card"></i> Permit</a>
-‏        <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-‏        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-‏    </nav>
-‏</header>
-
-‏<section class="hero" id="home">
-‏    <div class="overlay">
-‏        <h2>Your Smart Hajj & Umrah Companion</h2>
-‏        <p>A unified smart application for tracking transport fleets, checking room availability, processing digital permits, and guiding your spiritual loops.</p>
-‏        <button onclick="welcomeMessage()">Start Journey <i class="fa-solid fa-angles-right"></i></button>
-‏    </div>
-‏</section>
-
-‏<section class="about-section" id="about">
-‏    <h2>About Muslim Platform</h2>
-‏    <p>Muslim is a comprehensive full-stack ecosystem designed to digitize pilgrim services, strictly aligned with the tech-advancement of Saudi Vision 2030.</p>
-‏</section>
-
-‏<section class="tawaf-section" id="tawaf">
-‏    <h2>Dynamic Tawaf Counter</h2>
-‏    <p class="section-desc">Keep active track of your circumambulation rounds with progress tracking.</p>
-‏    <div class="tawaf-container">
-‏        <div class="progress-circle" id="progressCircle">
-‏            <span id="counterDisplay">0</span>
-‏            <p>Rounds</p>
-‏        </div>
-‏        <div class="counter-controls">
-‏            <button onclick="incrementTawaf()" class="ctrl-btn plus-btn"><i class="fa-solid fa-plus"></i> Add Round</button>
-‏            <button onclick="resetTawaf()" class="ctrl-btn reset-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
-‏        </div>
-‏        <div id="tawafStatus" class="status-msg">Click 'Add Round' to start counting.</div>
-‏    </div>
-‏</section>
-
-‏<section class="packages-section" id="packages">
-‏    <h2>Color-Coded Hajj Packages</h2>
-‏    <p class="section-desc">Select from our verified tiers with direct color mapping indicator rules.</p>
-‏    <div class="packages-container">
-‏        <div class="package-gold">
-‏            <h3><i class="fa-solid fa-crown"></i> Luxury VIP Tier</h3>
-‏            <p class="price">$18,040</p>
-‏            <p>Premium Haram View hotel rooms, private luxury vehicles, and customized premium catering.</p>
-‏        </div>
-‏        <div class="package-emerald">
-‏            <h3><i class="fa-solid fa-leaf"></i> Economy Support Tier</h3>
-‏            <p class="price">$5,000</p>
-‏            <p>Standard accommodations near transportation hubs, shared institutional bus transport, and catering buffets.</p>
-‏        </div>
-‏    </div>
-‏</section>
-
-‏<section class="maps-section" id="maps">
-‏    <h2>Live Shuttle Bus Fleet Telemetry</h2>
-‏    <p class="section-desc">Real-time status monitoring of the 5 active pilgrim transit buses between Madinah & Makkah.</p>
-‏    <div class="map-container">
-‏        <div class="sidebar">
-‏            <h4><i class="fa-solid fa-list-check"></i> Fleet Registry</h4>
-‏            <ul class="fleet-list">
-‏                <li><i class="fa-solid fa-bus"></i> Shuttle #01 - <span class="status-active">Active</span></li>
-‏                <li><i class="fa-solid fa-bus"></i> Shuttle #02 - <span class="status-active">Active</span></li>
-‏                <li><i class="fa-solid fa-bus"></i> Shuttle #03 - <span class="status-transit">In Transit</span></li>
-‏                <li><i class="fa-solid fa-bus"></i> Shuttle #04 - <span class="status-delayed">Delayed</span></li>
-‏                <li><i class="fa-solid fa-bus"></i> Shuttle #05 - <span class="status-standby">Standby</span></li>
-‏            </ul>
-‏        </div>
-‏        <div class="map-view">
-‏            <div class="route-axis">
-‏                <span class="location-node">Madinah Hub</span>
-‏                <div class="transit-line">
-‏                    <div class="moving-bus"><i class="fa-solid fa-bus"></i></div>
-‏                </div>
-‏                <span class="location-node">Makkah Station</span>
-‏            </div>
-‏            <p class="gps-text"><i class="fa-solid fa-satellite-dish"></i> GPS Tracking Feed Connected Via PHP & MySQL Live Drivers.</p>
-‏        </div>
-‏    </div>
-‏</section>
-
-‏<section class="hotels-section" id="hotels">
-‏    <h2>Affiliated Hotels & Booking Checks</h2>
-‏    <p class="section-desc">Book through our links to trigger a 15% discount code and upload the receipt to verify state files inside Muslim.</p>
-‏    <div class="hotel-grid">
-‏        <div class="hotel-card">
-‏            <div class="hotel-img-placeholder"><i class="fa-solid fa-building-user"></i></div>
-‏            <h3>Makkah Clock Royal Tower</h3>
-‏            <p class="room-status"><i class="fa-solid fa-circle-check"></i> Available Rooms: 14 Rooms Left</p>
-‏            <a href="https://www.fairmont.com/makkah/?ref=muslim_discount15" target="_blank" class="discount-btn">Book with 15% Muslim Discount</a>
-            
-‏            <form action="index.php" method="POST" enctype="multipart/form-data" class="upload-form">
-‏                <label><i class="fa-solid fa-file-arrow-up"></i> Upload External Booking Receipt to Confirm:</label>
-‏                <input type="file" name="hotel_receipt" required>
-‏                <input type="hidden" name="id_hidden" value="446005010">
-‏                <button type="submit" name="upload_receipt_btn" class="upload-submit-btn">Verify inside Muslim</button>
-‏            </form>
-‏        </div>
-‏    </div>
-‏</section>
-
-‏<section class="permit-section" id="permit">
-‏    <div class="permit-container">
-‏        <h2>Official Ministry Digital Permit</h2>
-‏        <p>Security Clearance Layer - One-Time Use Validated System</p>
-‏        <div class="barcode-wrapper">
-‏            <div id="barcode_display">|||*446005010*|||</div>
-‏            <p class="serial-no">Serial Reference: MSLM-2026-992172</p>
-‏        </div>
-‏        <form action="index.php" method="POST">
-‏            <input type="hidden" name="permit_serial_check" value="MSLM-2026-992172">
-‏            <button type="submit" name="scan_permit_btn" class="scan-btn"><i class="fa-solid fa-qrcode"></i> Simulate Scan (One-Time Only)</button>
-‏        </form>
-‏    </div>
-‏</section>
-
-‏<section class="login-section" id="login">
+‏<div id="loginPage" class="login-wrapper">
 ‏    <div class="login-container">
-‏        <h2><i class="fa-solid fa-shield-halved"></i> Secured Login</h2>
-‏        <form onsubmit="return validateLogin()">
+‏        <div class="logo-area">
+‏            <img src="logo.png.PNG" alt="Muslim Logo" class="main-logo-img">
+‏        </div>
+‏        <h2><i class="fa-solid fa-shield-halved"></i> Secured Login Portal</h2>
+‏        <p style="font-size: 11px; text-align: center; color: #64748b; margin-bottom: 15px;">Use Mock ID: 12345678910 & Pass: 1234</p>
+        
+‏        <form id="loginForm" onsubmit="return handleLogin(event)">
 ‏            <label><i class="fa-solid fa-id-card"></i> ID Type</label>
 ‏            <select id="idType" required>
 ‏                <option value="">Choose Credentials Type</option>
@@ -147,40 +27,185 @@
 ‏            </select>
             
 ‏            <label><i class="fa-solid fa-hashtag"></i> ID Number</label>
-‏            <input type="text" id="idNumber" placeholder="Enter 10-digit ID">
+‏            <input type="text" id="idNumber" placeholder="Enter 10-digit ID" required>
             
 ‏            <label><i class="fa-solid fa-key"></i> Password</label>
-‏            <input type="password" id="password" placeholder="••••••••">
+‏            <input type="password" id="password" placeholder="••••" required>
             
 ‏            <button type="submit">Log In Securely</button>
 ‏        </form>
 ‏    </div>
-‏</section>
+‏</div>
 
-‏<section class="contact-section" id="contact">
-‏    <div class="contact-container">
-‏        <h2><i class="fa-solid fa-paper-plane"></i> Contact & Support Form</h2>
-‏        <form name="contactForm" action="index.php" method="POST" onsubmit="return validateContactForm(event)">
-‏            <label>Full Name</label>
-‏            <input type="text" name="name" id="contactName" placeholder="Enter your full name" required>
+‏<div id="dashboardPage" class="dashboard-wrapper" style="display: none;">
+    
+‏    <aside class="sidebar">
+‏        <div>
+‏            <div class="sidebar-brand">
+‏                <i class="fa-solid fa-kaaba"></i> Muslim Platform
+‏            </div>
+‏            <ul class="sidebar-menu">
+‏                <li id="menu-overview" class="active"><a href="#" onclick="switchTab('overview')"><i class="fa-solid fa-chart-pie"></i> Overview</a></li>
+‏                <li id="menu-tawaf"><a href="#" onclick="switchTab('tawaf')"><i class="fa-solid fa-circle-dot"></i> Tawaf Counter</a></li>
+‏                <li id="menu-packages"><a href="#" onclick="switchTab('packages')"><i class="fa-solid fa-cubes"></i> Hajj Packages</a></li>
+‏                <li id="menu-transport"><a href="#" onclick="switchTab('transport')"><i class="fa-solid fa-bus"></i> Live Tracking</a></li>
+‏                <li id="menu-hotels"><a href="#" onclick="switchTab('hotels')"><i class="fa-solid fa-hotel"></i> Hotel Grid</a></li>
+‏                <li id="menu-contact"><a href="#" onclick="switchTab('contact')"><i class="fa-solid fa-paper-plane"></i> Support Desk</a></li>
+‏            </ul>
+‏        </div>
+        
+‏        <div class="sidebar-user-avatar">
+‏            <div class="avatar-icon"><i class="fa-solid fa-circle-user"></i></div>
+‏            <div class="avatar-name">
+‏                <p style="margin:0; font-size:12px; color:#b7ffcb;">Logged in as:</p>
+‏                <span style="font-size:13px;">Pilgrim Profile</span>
+‏            </div>
+‏            <a href="#" onclick="logout()" style="margin-left: auto; color: #ffbcbc;" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+‏        </div>
+‏    </aside>
 
-‏            <label>Email Address</label>
-‏            <input type="email" name="email" id="contactEmail" placeholder="name@example.com" required>
+‏    <main class="main-content">
+‏        <div class="top-bar">
+‏            <h3>Smart Pilgrim Control Center</h3>
+‏            <div class="user-info"><i class="fa-solid fa-clock"></i> Academic Season 2026</div>
+‏        </div>
 
-‏            <label>Message Text</label>
-‏            <textarea name="message" id="contactMessage" rows="4" placeholder="Write message description here..." required></textarea>
+‏        <div class="content-body">
+            
+‏            <div id="tab-overview" class="tab-content">
+‏                <div class="info-box-simulation">
+‏                    <h2>Welcome to Muslim Companion Portal!</h2>
+‏                    <p>Select any technical service from the sidebar menu to simulate real-time operations, verify tracking modules, or manage your spiritual rituals.</p>
+‏                </div>
+‏                <div class="dashboard-cards" style="margin-top: 20px;">
+‏                    <div class="card">
+‏                        <h4>Tawaf Rounds</h4>
+‏                        <p id="overviewTawaf">0 / 7 Completed</p>
+‏                    </div>
+‏                    <div class="card">
+‏                        <h4>Active Fleet status</h4>
+‏                        <p>5 Shuttles Online</p>
+‏                    </div>
+‏                </div>
+‏            </div>
 
-‏            <button type="submit" name="submit_contact">Submit Message Form</button>
-‏        </form>
-‏    </div>
-‏</section>
+‏            <div id="tab-tawaf" class="tab-content" style="display: none;">
+‏                <div class="tawaf-container">
+‏                    <h2>Dynamic Tawaf Counter</h2>
+‏                    <p class="section-desc">Keep track of your circumambulation rounds with instant physical response metrics.</p>
+‏                    <div class="progress-circle" id="progressCircle">
+‏                        <span id="counterDisplay">0</span>
+‏                        <p>Rounds</p>
+‏                    </div>
+‏                    <div class="counter-controls">
+‏                        <button onclick="incrementTawaf()" class="ctrl-btn plus-btn"><i class="fa-solid fa-plus"></i> Add Round</button>
+‏                        <button onclick="resetTawaf()" class="ctrl-btn reset-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+‏                    </div>
+‏                    <div id="tawafStatus" class="status-msg">Click 'Add Round' to log structural telemetry.</div>
+‏                </div>
+‏            </div>
 
-‏<footer>
-‏    <p>© 2026 Muslim Website - All Academic Rights Reserved.</p>
-‏    <div class="social-icons">
-‏        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-‏        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-‏        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+‏            <div id="tab-packages" class="tab-content" style="display: none;">
+‏                <h2>Color-Coded Hajj Packages Tiers</h2>
+‏                <div class="packages-container">
+‏                    <div class="package-gold">
+‏                        <h3><i class="fa-solid fa-crown"></i> Luxury VIP Tier</h3>
+‏                        <p class="price">$18,040</p>
+‏                        <p>Premium Haram View hotel blocks, dedicated 24/7 concierge, and private VIP fleet transit layers.</p>
+‏                    </div>
+‏                    <div class="package-emerald">
+‏                        <h3><i class="fa-solid fa-leaf"></i> Economy Support Tier</h3>
+‏                        <p class="price">$5,000</p>
+‏                        <p>Standard accommodations near transportation nodes, full integration with institutional bus transport.</p>
+‏                    </div>
+‏                </div>
+‏            </div>
+
+‏            <div id="tab-transport" class="tab-content" style="display: none;">
+‏                <div class="transport-map-box">
+‏                    <div class="interactive-map">
+‏                        <div class="map-node">
+‏                            <div class="node-icon" style="color:#0B6623;"><i class="fa-solid fa-mosque"></i></div>
+‏                            <div class="node-text">Madinah</div>
+‏                        </div>
+‏                        <div class="map-route-line">
+‏                            <div class="moving-bus"><i class="fa-solid fa-bus"></i> Telemetry Active</div>
+‏                        </div>
+‏                        <div class="map-node">
+‏                            <div class="node-icon" style="color:#D4AF37;"><i class="fa-solid fa-kaaba"></i></div>
+‏                            <div class="node-text">Makkah</div>
+‏                        </div>
+‏                    </div>
+‏                </div>
+‏                <div class="dashboard-cards" style="margin-top:20px;">
+‏                    <div class="card" style="border-right-color:#2563eb;">
+‏                        <h4>Active Fleet Records</h4>
+‏                        <p style="font-size:14px; font-weight:normal; margin-top:5px; color:#475569;">
+‏                            Shuttle #01 & #02: Active | Shuttle #03: In Transit | Shuttle #04: Delayed | Shuttle #05: Standby
+‏                        </p>
+‏                    </div>
+‏                </div>
+‏            </div>
+
+‏            <div id="tab-hotels" class="tab-content" style="display: none;">
+‏                <h2>Affiliated Hotel Controls & Digital Permits</h2>
+‏                <div class="hotel-grid">
+‏                    <div class="room-card">
+‏                        <div class="room-img-box"><i class="fa-solid fa-building-circle-check"></i></div>
+‏                        <h3>Makkah Clock Royal Tower</h3>
+‏                        <p class="room-status"><i class="fa-solid fa-square-poll-vertical"></i> 14 Accommodation Lots Left</p>
+‏                        <a href="https://www.fairmont.com/makkah/?ref=muslim_discount15" target="_blank" class="discount-btn">Go to Fairmont External Site (15% Discount Applied)</a>
+                        
+‏                        <form action="index.php" method="POST" enctype="multipart/form-data" class="upload-form">
+‏                            <label><i class="fa-solid fa-cloud-arrow-up"></i> Upload External Booking Receipt to Confirm Integration:</label>
+‏                            <input type="file" name="hotel_receipt" required style="margin-top:10px;">
+‏                            <input type="hidden" name="id_hidden" value="12345678910">
+‏                            <button type="submit" name="upload_receipt_btn" class="upload-submit-btn">Verify inside Muslim File Structure</button>
+‏                        </form>
+‏                    </div>
+
+‏                    <div class="permit-card">
+‏                        <h3>Ministry Digital Permit</h3>
+‏                        <p style="font-size:12px; color:#64748b;">Single-Use Security Token Layer</p>
+‏                        <div id="barcode_display">|||*12345678910*|||</div>
+‏                        <p class="serial-no">Serial: MSLM-2026-992172</p>
+                        
+‏                        <form action="index.php" method="POST">
+‏                            <input type="hidden" name="permit_serial_check" value="MSLM-2026-992172">
+‏                            <button type="submit" name="scan_permit_btn" class="scan-btn"><i class="fa-solid fa-qrcode"></i> Scan Code (Halt After Single-Use)</button>
+‏                        </form>
+‏                    </div>
+‏                </div>
+‏            </div>
+
+‏            <div id="tab-contact" class="tab-content" style="display: none;">
+‏                <div class="contact-container" style="width:100%; max-width:600px;">
+‏                    <h2><i class="fa-solid fa-paper-plane"></i> Academic Contact & Support Form</h2>
+‏                    <form name="contactForm" action="index.php" method="POST" onsubmit="return validateContactForm(event)">
+‏                        <label>Full Name</label>
+‏                        <input type="text" name="name" id="contactName" placeholder="Enter your official full name" required>
+
+‏                        <label>Email Address</label>
+‏                        <input type="email" name="email" id="contactEmail" placeholder="student@university.edu" required>
+
+‏                        <label>Message Payload Text</label>
+‏                        <textarea name="message" id="contactMessage" rows="4" placeholder="Write full inquiry description here for MySQL logging extraction..." required></textarea>
+
+‏                        <button type="submit" name="submit_contact">Submit Message Pipeline</button>
+‏                    </form>
+‏                </div>
+‏            </div>
+
+‏        </div>
+‏    </main>
+‏</div>
+
+‏<footer style="background:#0B6623; color:white; text-align:center; padding:15px; margin-top:20px; font-size:14px;">
+‏    <p>© 2026 Muslim Platform Manuscript - All Academic Grading Rights Reserved.</p>
+‏    <div class="social-icons" style="margin-top:10px; display:flex; justify-content:center; gap:15px;">
+‏        <a href="https://twitter.com" target="_blank" style="color:white;"><i class="fa-brands fa-x-twitter"></i></a>
+‏        <a href="https://instagram.com" target="_blank" style="color:white;"><i class="fa-brands fa-instagram"></i></a>
+‏        <a href="https://linkedin.com" target="_blank" style="color:white;"><i class="fa-brands fa-linkedin-in"></i></a>
 ‏    </div>
 ‏</footer>
 
