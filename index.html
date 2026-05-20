@@ -1,103 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Muslim Login</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
-
-<body class="login-body">
-
-<!-- LOADER -->
-
-<div id="loader">
-
-    <div class="spinner"></div>
-
-</div>
-
-<!-- LOGIN -->
-
-<div class="login-container">
-
-    <img src="logo.png.PNG" class="login-logo">
-
-    <h1>تسجيل الدخول</h1>
-
-    <p class="login-subtitle">
-‎        منصة خدمات الحج والعمرة الذكية
-    </p>
-
-    <form
-    action="php/login.php"
-    method="POST"
-    id="loginForm">
-
-        <div class="input-box">
-
-            <i class="fa fa-id-card"></i>
-
-            <input
-            type="text"
-            name="identity"
-            id="identity"
-            placeholder="رقم الهوية / الإقامة"
-            required>
-
-        </div>
-
-        <div class="input-box">
-
-            <i class="fa fa-lock"></i>
-
-            <input
-            type="password"
-            name="password"
-            placeholder="كلمة المرور"
-            required>
-
-        </div>
-
-        <button type="submit">
-
-            <i class="fa fa-right-to-bracket"></i>
-
-‎            تسجيل الدخول
-
-        </button>
-
-    </form>
-
-    <p id="loginError"></p>
-
-    <div class="login-footer">
-
-        <a href="#">
-            Forgot Password?
-        </a>
-
-        <a href="#">
-            Register New User
-        </a>
-
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.png.PNG" alt="Muslim Logo">
     </div>
-
-</div>
-
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Tawaf</a>
+        <a href="#">Maps</a>
+        <a href="#">Emergency</a>
+        <a href="#">Login</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+<section class="hero">
+    <div class="overlay">
+        <h2>Your Smart Hajj & Umrah Companion</h2>
+        <p>Helping pilgrims manage Tawaf, maps, emergency services, and spiritual guidance.</p>
+        <button onclick="welcomeMessage()">Start Journey</button>
+    </div>
+</section>
+<section class="features">
+    <div class="card">
+        <i class="fa-solid fa-kaaba"></i>
+        <h3>Tawaf Counter</h3>
+        <p>Count your Tawaf rounds easily.</p>
+    </div>
+    <div class="card">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h3>Maps</h3>
+        <p>Easy navigation around Makkah.</p>
+    </div>
+    <div class="card">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>Emergency</h3>
+        <p>Quick access to emergency help.</p>
+    </div>
+</section>
+<section class="login-section">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return validateLogin()">
+            <label>ID Type</label>
+            <select required>
+                <option value="">Choose</option>
+                <option>National ID</option>
+                <option>Iqama</option>
+                <option>Visitor Card</option>
+            </select>
+            <label>ID Number</label>
+            <input type="text" id="idNumber">
+            <label>Password</label>
+            <input type="password" id="password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</section>
+<footer>
+    <p>© 2026 Muslim Website</p>
+</footer>
 <script src="js/script.js"></script>
-
 </body>
 </html>
