@@ -1,102 +1,21 @@
-/* LOADER */
-
-window.onload = ()=>{
-
-    let loader =
-    document.getElementById("loader");
-
-    if(loader){
-        loader.style.display = "none";
-    }
-
-};
-
-/* LOGIN VALIDATION */
-
-document.getElementById("loginForm")
-?.addEventListener("submit", function(e){
-
-    let identity =
-    document.getElementById("identity").value;
-
-    if(identity.length < 10){
-
-        e.preventDefault();
-
-        document.getElementById("loginError")
-        .innerText = "رقم الهوية غير صحيح";
-
-    }
-
-});
-
-/* DARK MODE */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
+function welcomeMessage(){
+    alert("Welcome To Muslim Website");
 }
-
-/* QR */
-
-let scanned = false;
-
-function scanPermit(){
-
-    let status =
-    document.getElementById("permitStatus");
-
-    if(scanned == false){
-
-        status.innerHTML =
-‎        "✅ تم قبول التصريح";
-
-        status.style.color = "green";
-
-        scanned = true;
-
-    }else{
-
-        status.innerHTML =
-‎        "❌ التصريح مستخدم مسبقاً";
-
-        status.style.color = "red";
-
+function validateLogin(){
+    let idNumber = document.getElementById("idNumber").value;
+    let password = document.getElementById("password").value;
+    if(idNumber === "" || password === ""){
+        alert("Please fill all fields");
+        return false;
     }
-
-}
-
-/* CHART */
-
-const chartCanvas =
-document.getElementById("myChart");
-
-if(chartCanvas){
-
-new Chart(chartCanvas, {
-
-type:'bar',
-
-data:{
-
-labels:[
-‎'يناير',
-‎'فبراير',
-‎'مارس',
-‎'أبريل'
-],
-
-datasets:[{
-
-label:'عدد الحجاج',
-
-data:[120,190,300,500]
-
-}]
-
-}
-
-});
-
+    if(idNumber.length < 10){
+        alert("ID Number must be at least 10 digits");
+        return false;
+    }
+    if(password.length < 6){
+        alert("Password must be at least 6 characters");
+        return false;
+    }
+    alert("Login Successful");
+    return true;
 }
