@@ -1,188 +1,412 @@
-* {
-‏    margin: 0;
-‏    padding: 0;
-‏    box-sizing: border-box;
-‏    font-family: 'Segoe UI', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:tahoma;
 }
 
-‏:root {
-‏    --dark-green: #0B6623;
-‏    --emerald-green: #198754;
-‏    --light-bg: #DFF5E1;
-‏    --white: #ffffff;
-‏    --text-dark: #1e293b;
-‏    --gold: #D4AF37;
+body{
+    background:#eef4ee;
 }
 
-‏body {
-‏    background-color: var(--light-bg);
-‏    color: var(--text-dark);
+/* LOADER */
+
+#loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:white;
+    z-index:9999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-/* واجهة تسجيل الدخول الاحترافية المترابطة عمودياً */
-‏.login-wrapper {
-‏    display: flex;
-‏    justify-content: center;
-‏    align-items: center;
-‏    min-height: 100vh;
-‏    background-color: var(--light-bg);
+.spinner{
+    width:80px;
+    height:80px;
+
+    border:8px solid #ddd;
+    border-top:8px solid #0c5f38;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
 }
 
-‏.login-container {
-‏    background: var(--white);
-‏    width: 100%;
-‏    max-width: 400px;
-‏    padding: 35px;
-‏    border-radius: 20px;
-‏    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-‏    border-top: 6px solid var(--dark-green);
-‏    text-align: center;
+@keyframes spin{
+
+    100%{
+        transform:rotate(360deg);
+    }
+
 }
 
-‏.logo-area img {
-‏    width: 150px;
-‏    margin-bottom: 15px;
+/* LOGIN */
+
+.login-body{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url('https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=1200');
+
+    background-size:cover;
 }
 
-‏.login-container form {
-‏    display: flex !important;
-‏    flex-direction: column !important; /* إجبار العناصر على التراص العمودي */
-‏    text-align: left;
+.login-container{
+    width:400px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,.2);
 }
 
-‏label {
-‏    margin-top: 12px;
-‏    margin-bottom: 5px;
-‏    color: #145c32;
-‏    font-weight: bold;
-‏    font-size: 13px;
+.login-logo{
+    width:120px;
 }
 
-‏input, select, textarea {
-‏    width: 100%;
-‏    padding: 11px 14px;
-‏    border: 2px solid #cbd5e1;
-‏    border-radius: 8px;
-‏    font-size: 14px;
-‏    outline: none;
-‏    background: #f8fafc;
-‏    margin-bottom: 5px;
+.login-container input{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
 
-‏input:focus, select:focus, textarea:focus {
-‏    border-color: var(--dark-green);
-‏    background: var(--white);
+.login-container button{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    background:#0c5f38;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
 }
 
-‏button {
-‏    width: 100%;
-‏    padding: 12px;
-‏    background-color: var(--emerald-green);
-‏    color: var(--white);
-‏    border: none;
-‏    border-radius: 8px;
-‏    font-size: 15px;
-‏    font-weight: bold;
-‏    cursor: pointer;
-‏    margin-top: 15px;
+/* DASHBOARD */
+
+.dashboard{
+    display:flex;
 }
 
-‏button:hover {
-‏    background-color: var(--dark-green);
+.sidebar{
+    width:270px;
+    background:#0c5f38;
+    min-height:100vh;
+    padding:25px;
+    color:white;
 }
 
-/* هيكلية لوحة التحكم والـ Sidebar للآيباد */
-‏.dashboard-wrapper {
-‏    display: flex;
-‏    min-height: 100vh;
+.sidebar-top{
+    text-align:center;
 }
 
-‏.sidebar {
-‏    width: 270px;
-‏    background-color: var(--dark-green);
-‏    color: var(--white);
-‏    display: flex;
-‏    flex-direction: column;
-‏    justify-content: space-between;
+.sidebar-top img{
+    width:110px;
 }
 
-‏.sidebar-brand {
-‏    font-size: 20px;
-‏    font-weight: bold;
-‏    text-align: center;
-‏    padding: 25px 0;
-‏    border-bottom: 1px solid rgba(255,255,255,0.1);
+.sidebar nav{
+    margin-top:40px;
 }
 
-‏.sidebar-menu { list-style: none; padding: 0; }
-‏.sidebar-menu li a {
-‏    display: block;
-‏    color: #e6f7ec;
-‏    padding: 15px 20px;
-‏    text-decoration: none;
-‏    font-size: 14px;
+.sidebar nav a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    transition:.3s;
 }
 
-‏.sidebar-menu li.active a, .sidebar-menu li a:hover {
-‏    background-color: var(--emerald-green);
-‏    border-left: 5px solid var(--white);
-‏    padding-left: 25px;
+.sidebar nav a:hover{
+    background:rgba(255,255,255,.2);
 }
 
-‏.sidebar-user-avatar {
-‏    padding: 15px;
-‏    background: rgba(0,0,0,0.15);
-‏    display: flex;
-‏    align-items: center;
-‏    gap: 10px;
+.main-content{
+    flex:1;
+    padding:30px;
 }
 
-‏.main-content {
-‏    flex: 1;
-‏    background-color: #f4f6f8;
-‏    display: flex;
-‏    flex-direction: column;
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-‏.top-bar {
-‏    background: var(--white);
-‏    padding: 15px 30px;
-‏    display: flex;
-‏    justify-content: space-between;
-‏    align-items: center;
-‏    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+.notification{
+    background:#d4edda;
+    padding:10px 20px;
+    border-radius:10px;
 }
 
-/* تبويبات لوحة التحكم وبطاقات التقدم */
-‏.tab-content { padding: 25px; }
-‏.info-box-simulation { background: white; padding: 20px; border-radius: 12px; border-top: 4px solid var(--dark-green); margin-bottom: 20px; }
-‏.dashboard-cards { display: flex; gap: 15px; }
-‏.card { background: white; flex: 1; padding: 18px; border-radius: 10px; border-left: 5px solid var(--emerald-green); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:30px;
+}
 
-/* العداد الدائري الفخم للطواف */
-‏.tawaf-container { background: white; max-width: 360px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-‏.progress-circle { width: 150px; height: 150px; border-radius: 50%; border: 6px solid #e2e8f0; border-top-color: var(--dark-green); margin: 0 auto 20px auto; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-‏#counterDisplay { font-size: 44px; font-weight: bold; color: var(--dark-green); }
-‏.counter-controls { display: flex; gap: 10px; }
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
 
-/* باقات وعروض الحج ومسارات النقل */
-‏.packages-container { display: flex; gap: 15px; }
-‏.package-gold { background: #FFFDF0; border-top: 5px solid var(--gold); padding: 20px; border-radius: 10px; flex: 1; }
-‏.package-emerald { background: #F0FDF4; border-top: 5px solid var(--dark-green); padding: 20px; border-radius: 10px; flex: 1; }
+.card:hover{
+    transform:translateY(-8px);
+}
 
-‏.interactive-map { background-color: #f1fbf3; border: 2px solid #ccecd2; padding: 35px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; position: relative; }
-‏.map-node { background: white; padding: 10px; border-radius: 50%; width: 70px; height: 70px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid var(--dark-green); z-index: 2; }
-‏.map-route-line { flex: 1; height: 4px; background: repeating-linear-gradient(90deg, #198754, #198754 10px, transparent 10px, transparent 20px); position: relative; }
-‏.moving-bus { position: absolute; background: var(--dark-green); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; top: -11px; right: 45%; animation: moveBus 5s infinite linear; }
-‏@keyframes moveBus { 0% { right: 10%; } 100% { right: 80%; } }
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
 
-‏.hotel-grid { display: flex; gap: 15px; justify-content: center; }
-‏.room-card, .permit-card { background: white; padding: 20px; border-radius: 10px; flex: 1; max-width: 340px; border: 1px solid #e2e8f0; text-align: center; }
-‏.discount-btn { display: inline-block; background: var(--dark-green); color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 13px; margin-top: 10px; }
-‏#barcode_display { background: black; color: white; font-family: monospace; font-size: 20px; letter-spacing: 8px; padding: 8px; display: inline-block; margin: 10px 0; }
+.card h2,
+.card p{
+    padding:15px;
+}
 
-‏@media(max-width: 768px) {
-‏    .dashboard-wrapper { flex-direction: column; }
-‏    .sidebar { width: 100%; }
-‏    .dashboard-cards, .packages-container, .hotel-grid { flex-direction: column; }
+.chart-box,
+.live-map,
+.table-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    margin-top:30px;
+}
+
+.road{
+    width:100%;
+    height:10px;
+    background:#333;
+    margin-top:100px;
+    position:relative;
+}
+
+.bus{
+    position:absolute;
+    top:-25px;
+    font-size:35px;
+
+    animation:moveBus 8s linear infinite;
+}
+
+@keyframes moveBus{
+
+    from{
+        left:0;
+    }
+
+    to{
+        left:90%;
+    }
+
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    padding:15px;
+    border:1px solid #ddd;
+}
+
+.green{
+    color:green;
+}
+
+/* HOTELS */
+
+.hotel-grid{
+    padding:50px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.hotel-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.hotel-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.hotel-card h2,
+.hotel-card p{
+    padding:15px;
+}
+
+.hotel-card a{
+    margin:15px;
+    display:inline-block;
+
+    background:#0c5f38;
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+}
+
+/* PAYMENT */
+
+.payment-box{
+    width:450px;
+    margin:100px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+}
+
+.payment-box input{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+}
+
+.payment-box button{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    border:none;
+    background:#0c5f38;
+    color:white;
+}
+
+.pay-icons{
+    margin-top:20px;
+    font-size:20px;
+}
+
+/* TRANSPORT */
+
+.transport-layout{
+    display:grid;
+    grid-template-columns:1fr 3fr;
+    gap:20px;
+    padding:40px;
+}
+
+.bus-status{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+.bus-card{
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    color:white;
+}
+
+.active{
+    background:green;
+}
+
+.transit{
+    background:#007bff;
+}
+
+.delayed{
+    background:red;
+}
+
+.standby{
+    background:gray;
+}
+
+.map-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+}
+
+/* PERMIT */
+
+.permit-card{
+    width:450px;
+    background:white;
+    margin:70px auto;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.permit-logo{
+    width:100px;
+}
+
+.qr{
+    margin-top:20px;
+}
+
+/* DARK MODE */
+
+.dark{
+    background:#111;
+    color:white;
+}
+
+.dark .card,
+.dark .chart-box,
+.dark .table-box,
+.dark .live-map,
+.dark .hotel-card,
+.dark .payment-box,
+.dark .permit-card,
+.dark .map-box,
+.dark .bus-status{
+    background:#1e1e1e;
+    color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.dashboard{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    min-height:auto;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+
+.transport-layout{
+    grid-template-columns:1fr;
+}
+
+.payment-box,
+.permit-card{
+    width:95%;
+}
+
 }
