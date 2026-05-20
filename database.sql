@@ -1,73 +1,218 @@
--- =========================================================================
--- 1. إنشاء قاعدة البيانات الموحدة وتفعيلها (Database Creation & Context)
--- =========================================================================
-‏CREATE DATABASE IF NOT EXISTS hajj_umrah_db;
-‏USE hajj_umrah_db;
+CREATE DATABASE hajj_umrah_db;
 
--- =========================================================================
--- 2. جدول الحسابات والمستخدمين (Users Credentials Table for Login Validation)
--- =========================================================================
-‏CREATE TABLE IF NOT EXISTS users (
-‏    id INT AUTO_INCREMENT PRIMARY KEY,
-‏    id_type VARCHAR(50) NOT NULL,          -- نوع الهوية (National ID, Iqama, Visitor Card)
-‏    id_number VARCHAR(50) NOT NULL UNIQUE, -- رقم الهوية (مفتاح فريد يمنع التكرار)
-‏    password VARCHAR(255) NOT NULL         -- كلمة المرور لتوثيق الجلسات الآمنة
+USE hajj_umrah_db;
+
+‎-- جدول الحجاج
+
+CREATE TABLE pilgrims (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    full_name VARCHAR(100),
+
+    identity_number VARCHAR(20) UNIQUE,
+
+    nationality VARCHAR(50),
+
+    package_type VARCHAR(50),
+
+    hotel_name VARCHAR(100),
+
+    permit_status VARCHAR(50) DEFAULT 'Valid',
+
+    qr_token VARCHAR(255),
+
+    receipt_file VARCHAR(255),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 );
 
--- إدراج الحساب القياسي المحاكي في الجدول لضمان عمل الواجهة مباشرة عند الاختبار محلياً
-‏INSERT INTO users (id_type, id_number, password) VALUES 
-‏('National ID', '12345678910', '1234')
-‏ON DUPLICATE KEY UPDATE password='1234';
+‎-- جدول الرسائل
 
+CREATE TABLE contact_messages (
 
--- =========================================================================
--- 3. جدول سجلات الحجاج والإيصالات والتصاريح (Pilgrims Control Table for CRUD Tasks)
--- =========================================================================
-‏CREATE TABLE IF NOT EXISTS pilgrims (
-‏    id INT AUTO_INCREMENT PRIMARY KEY,
-‏    name VARCHAR(120) NOT NULL,
-‏    id_number VARCHAR(30) NOT NULL UNIQUE,
-‏    package_tier VARCHAR(50) NOT NULL,
-‏    receipt_path VARCHAR(255) DEFAULT NULL,    -- لحفظ مسار إيصال حجز الفندق المرفوع عبر PHP
-‏    booking_status VARCHAR(50) DEFAULT 'Pending',
-‏    permit_serial VARCHAR(100) DEFAULT 'MSLM-2026-992172',
-‏    permit_status VARCHAR(50) DEFAULT 'Valid', -- يتغير برمجياً إلى Invalidated عند استهلاك مسح الباركود لمرة واحدة
-‏    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    name VARCHAR(100),
+
+    email VARCHAR(100),
+
+    message TEXT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 );
 
--- إدراج سجل تجريبي مطابق لبيانات الفريق الأكاديمي لعرض المحاكاة الحية أمام الدكتورة
-‏INSERT INTO pilgrims (name, id_number, package_tier) VALUES 
-‏('Bayan Misfer Al-Ghamdi', '446005010', 'Luxury VIP Tier')
-‏ON DUPLICATE KEY UPDATE package_tier='Luxury VIP Tier';
+‎-- جدول المدفوعات
 
+CREATE TABLE payments (
 
--- =========================================================================
--- 4. جدول الرسائل والتعليقات (Contact Messages Table for CRUD - INSERT pipeline)
--- =========================================================================
-‏CREATE TABLE IF NOT EXISTS contact_messages (
-‏    id INT AUTO_INCREMENT PRIMARY KEY,
-‏    full_name VARCHAR(150) NOT NULL,
-‏    email_address VARCHAR(150) NOT NULL,
-‏    message_text TEXT NOT NULL,
-‏    received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    pilgrim_id INT,
+
+    amount DECIMAL(10,2),
+
+    payment_method VARCHAR(50),
+
+    payment_status VARCHAR(50),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 );
 
+‎-- جدول النقل
 
--- =========================================================================
--- 5. جدول تتبع حركة أسطول الحافلات الخمسة (Bus Fleet Telemetry for SELECT Live Feed)
--- =========================================================================
-‏CREATE TABLE IF NOT EXISTS transit_fleet (
-‏    bus_id INT AUTO_INCREMENT PRIMARY KEY,
-‏    shuttle_name VARCHAR(100) NOT NULL,
-‏    fleet_status VARCHAR(50) NOT NULL
+CREATE TABLE transport_buses (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    bus_name VARCHAR(50),
+
+    driver_name VARCHAR(100),
+
+    status VARCHAR(50),
+
+    current_location VARCHAR(255),
+
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 );
 
--- تصفير الجدول وإدخال الحافلات الخمسة المطلوبة لضمان مطابقتها للمخطط والواجهة بالملي
-‏TRUNCATE TABLE transit_fleet;
+‎-- جدول الفنادق
 
-‏INSERT INTO transit_fleet (shuttle_name, fleet_status) VALUES 
-‏('Shuttle Bus #01', 'Active'),
-‏('Shuttle Bus #02', 'Active'),
-‏('Shuttle Bus #03', 'In Transit'),
-‏('Shuttle Bus #04', 'Delayed'),
-‏('Shuttle Bus #05', 'Standby');
+CREATE TABLE hotels (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    hotel_name VARCHAR(100),
+
+    available_rooms INT,
+
+    discount_percentage INT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+‎-- بيانات تجريبية للحجاج
+
+INSERT INTO pilgrims (
+
+full_name,
+identity_number,
+nationality,
+package_type,
+hotel_name,
+permit_status,
+qr_token
+
+)
+
+VALUES
+
+(
+'Dalia Alghamdi',
+'12345678910',
+'Saudi',
+'Gold Package',
+'Al Safwah Hotel',
+'Valid',
+'QR123456'
+),
+
+(
+'Nojood Alghamdi',
+'99887766554',
+'Saudi',
+'Emerald Package',
+'Zamzam Hotel',
+'Valid',
+'QR998877'
+);
+
+‎-- بيانات تجريبية للباصات
+
+INSERT INTO transport_buses (
+
+bus_name,
+driver_name,
+status,
+current_location
+
+)
+
+VALUES
+
+(
+'Bus 1',
+'Ahmed',
+'Active',
+'Makkah Road'
+),
+
+(
+'Bus 2',
+'Mohammed',
+'In Transit',
+'Madinah Highway'
+),
+
+(
+'Bus 3',
+'Khalid',
+'Delayed',
+'Checkpoint'
+);
+
+‎-- بيانات الفنادق
+
+INSERT INTO hotels (
+
+hotel_name,
+available_rooms,
+discount_percentage
+
+)
+
+VALUES
+
+(
+'Al Safwah Hotel',
+14,
+15
+),
+
+(
+'Zamzam Hotel',
+7,
+15
+);
+
+‎-- بيانات المدفوعات
+
+INSERT INTO payments (
+
+pilgrim_id,
+amount,
+payment_method,
+payment_status
+
+)
+
+VALUES
+
+(
+1,
+15000.00,
+'Visa',
+'Confirmed'
+),
+
+(
+2,
+8000.00,
+'Mada',
+'Pending'
+);
