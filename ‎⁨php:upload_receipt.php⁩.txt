@@ -1,0 +1,36 @@
+<?php
+
+$file = $_FILES['receipt'];
+
+$allowed = ['jpg','png','jpeg','pdf'];
+
+$filename = $file['name'];
+
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+if(in_array($ext, $allowed)){
+
+    $newName =
+    time().".".$ext;
+
+    move_uploaded_file(
+        $file['tmp_name'],
+        "../uploads/receipts/".$newName
+    );
+
+    echo "
+    <h1 style='color:green;text-align:center'>
+    تم رفع الإيصال بنجاح
+    </h1>
+    ";
+
+}else{
+
+    echo "
+    <h1 style='color:red;text-align:center'>
+    صيغة غير مسموحة
+    </h1>
+    ";
+
+}
+?>

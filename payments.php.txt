@@ -1,0 +1,51 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user'])){
+    header("Location:index.html");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="payment-box">
+
+    <h1>المدفوعات</h1>
+
+    <form>
+
+        <input type="text" placeholder="رقم البطاقة">
+
+        <input type="text" placeholder="اسم حامل البطاقة">
+
+        <input type="text" placeholder="CVV">
+
+        <button>
+            دفع الآن
+        </button>
+
+    </form>
+
+    <div class="pay-icons">
+
+        💳 Visa
+        🍎 Apple Pay
+        🇸🇦 Mada
+
+    </div>
+
+</div>
+
+</body>
+</html>
