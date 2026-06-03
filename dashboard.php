@@ -1,208 +1,41 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['user'])){
-    header("Location:index.html");
-}
+// قراءة اسم المستخدم من الجلسة بالـ PHP
+$user_name = isset($_SESSION['user']) ? $_SESSION['user'] : "داليا عائض الغامدي";
+$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : "12345678910";
 ?>
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Muslim Dashboard</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <meta charset="UTF-8">
+    <title>منصة مسلم | لوحة التحكم</title>
+    <style>
+        :root { --primary: #1b4d3e; --secondary: #c5a059; --bg: #f4f6f4; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+        body { background: var(--bg); color: #2d3748; padding: 20px; }
+        .dash-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-right: 6px solid var(--secondary); }
+        h2 { color: var(--primary); margin-bottom: 15px; }
+        .info-box { background: var(--bg); padding: 15px; border-radius: 6px; margin-top: 15px; }
+        .btn-out { background: #e53e3e; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; font-weight: bold; text-decoration: none; display: inline-block; }
+    </style>
 </head>
-
 <body>
 
-<!-- LOADER -->
+<div class="dash-container">
+    <h2>💻 لوحة تحكم المستفيد النشطة</h2>
+    <p>تم تسجيل الدخول بنجاح عبر نظام الـ PHP المعتمد للمنصة.</p>
+    
+    <div class="info-box">
+        <p style="margin-bottom: 8px;">اسم الحاج/المعتمر: <strong style="color: var(--primary);"><?php echo $user_name; ?></strong></p>
+        <p>رقم الهوية الوطنية: <strong><?php echo $user_id; ?></strong></p>
+    </div>
 
-<div id="loader">
-    <div class="spinner"></div>
+    <div style="margin-top: 20px; background: #ebf8ff; padding: 12px; border-radius:6px; color: #2b6cb0; font-size: 14px;">
+        ℹ️ بقية الأقسام (الفنادق، الحافلات الـ 5، الخرائط) قيد التطوير والربط البرمجي وفقاً للمخطط الهيكلي للمشروع.
+    </div>
+
+    <a href="logout.php" class="btn-out">تسجيل الخروج الآمن 🔒</a>
 </div>
-
-<!-- DASHBOARD -->
-
-<div class="dashboard">
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar">
-
-        <div class="sidebar-top">
-
-            <img src="logo.png.PNG">
-
-            <h2>مُسلم</h2>
-
-        </div>
-
-        <nav>
-
-            <a href="dashboard.php">
-                <i class="fa fa-home"></i>
-                نظرة عامة
-            </a>
-
-            <a href="permits.php">
-                <i class="fa fa-qrcode"></i>
-                تصاريح العمرة
-            </a>
-
-            <a href="transport.php">
-                <i class="fa fa-bus"></i>
-                النقل
-            </a>
-
-            <a href="hotels.php">
-                <i class="fa fa-hotel"></i>
-                الفنادق
-            </a>
-
-            <a href="payments.php">
-                <i class="fa fa-credit-card"></i>
-                المدفوعات
-            </a>
-
-            <a href="logout.php">
-                <i class="fa fa-right-from-bracket"></i>
-                تسجيل الخروج
-            </a>
-
-        </nav>
-
-    </aside>
-
-    <!-- MAIN -->
-
-    <main class="main-content">
-
-        <div class="topbar">
-
-            <h1>لوحة التحكم</h1>
-
-            <div class="top-icons">
-
-                <button onclick="toggleTheme()" class="theme-btn">
-                    🌙
-                </button>
-
-                <div class="notification">
-                    🔔 دفعة جديدة مؤكدة
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- CARDS -->
-
-        <div class="cards">
-
-            <div class="card">
-
-                <img
-                src="https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=1200">
-
-                <h2>الباقة الذهبية</h2>
-
-                <p>إقامة مطلة على الحرم</p>
-
-            </div>
-
-            <div class="card">
-
-                <img
-                src="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?q=80&w=1200">
-
-                <h2>النقل</h2>
-
-                <p>الحافلة نشطة الآن</p>
-
-            </div>
-
-            <div class="card">
-
-                <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200">
-
-                <h2>الحجوزات</h2>
-
-                <p>تم تأكيد الحجز</p>
-
-            </div>
-
-        </div>
-
-        <!-- CHART -->
-
-        <div class="chart-box">
-
-            <h2>إحصائيات الحجاج</h2>
-
-            <canvas id="myChart"></canvas>
-
-        </div>
-
-        <!-- MAP -->
-
-        <div class="live-map">
-
-            <h2>النقل المباشر</h2>
-
-            <div class="road">
-
-                <div class="bus">🚌</div>
-
-            </div>
-
-        </div>
-
-        <!-- TABLE -->
-
-        <div class="table-box">
-
-            <h2>قائمة الحجاج</h2>
-
-            <table>
-
-                <tr>
-                    <th>الاسم</th>
-                    <th>الحالة</th>
-                </tr>
-
-                <tr>
-                    <td>داليا</td>
-                    <td class="green">Verified</td>
-                </tr>
-
-                <tr>
-                    <td>نجد</td>
-                    <td class="green">Verified</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-    </main>
-
-</div>
-
-<script src="js/script.js"></script>
 
 </body>
 </html>
