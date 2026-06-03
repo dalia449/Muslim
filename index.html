@@ -3,134 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة مسلم | الرفيق الذكي لضيوف الرحمن</title>
-    <!-- تم تعديل المسار ليطابق مجلد css الموجود في مستودعك بجيت هيب -->
-    <link rel="stylesheet" href="css/style.css">
+    <title>منصة مسلم الموحدة</title>
     <style>
-        /* إضافة التنسيقات الاحترافية مباشرة لضمان عملها فوراً في المتصفح */
-        :root {
-            --primary-color: #1b4d3e;
-            --secondary-color: #c5a059;
-            --bg-light: #f4f6f4;
-            --dark-text: #2d3748;
-        }
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        body { background-color: var(--bg-light); color: var(--dark-text); direction: rtl; }
-        header { background: var(--primary-color); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--secondary-color); }
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-container img { height: 60px; object-fit: contain; background: white; padding: 4px; border-radius: 8px; }
-        .logo-text h1 { font-size: 22px; color: var(--secondary-color); }
-        nav a { color: white; text-decoration: none; margin-right: 15px; font-weight: bold; font-size: 14px; }
-        nav a:hover { color: var(--secondary-color); }
-        
-        /* تقسيم الصفحة المقترح بالتقرير التقني: 25% للتحكم و 75% للمحتوى والتتبع */
-        .main-wrapper { display: flex; flex-direction: row; justify-content: space-between; align-items: stretch; gap: 20px; max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        .sidebar { flex: 1; min-width: 250px; background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-right: 5px solid var(--secondary-color); }
+        :root { --primary: #1b4d3e; --secondary: #c5a059; --bg: #f4f6f4; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+        body { background: var(--bg); color: #2d3748; }
+        header { background: var(--primary); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--secondary); }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-container img { height: 50px; background: white; padding: 3px; border-radius: 6px; }
+        nav a { color: white; text-decoration: none; margin-right: 15px; font-weight: bold; cursor: pointer; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+        nav a:hover, nav a.active { color: var(--secondary); background: rgba(255,255,255,0.1); }
+        .main-wrapper { display: flex; gap: 20px; max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .sidebar { flex: 1; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-right: 5px solid var(--secondary); height: fit-content; }
         .content-view { flex: 3; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: var(--bg-light); border-radius: 8px; padding: 15px; border-top: 4px solid var(--primary-color); }
-        .card h4 { color: var(--primary-color); margin-bottom: 8px; }
-        
-        .btn { background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
-        .btn:hover { background: #13362c; border-bottom: 2px solid var(--secondary-color); }
-        .form-group { margin-bottom: 15px; text-align: right; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px; }
+        .card { background: var(--bg); border-radius: 8px; padding: 20px; border-top: 4px solid var(--primary); }
+        .btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        .btn:hover { background: #13362c; }
+        .form-group { margin-bottom: 12px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], input[type="password"], select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; }
-        footer { text-align: center; padding: 20px; margin-top: 40px; background: #edf2f7; font-size: 14px; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; }
+        .banner { background: #c6f6d5; color: #22543d; padding: 12px; border-radius: 6px; margin-bottom: 25px; display: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <!-- استدعاء اللوجو بالاسم الدقيق الموجود في مستودع جيت هيب الخاص بك -->
-        <img src="logo.png.PNG" alt="شعار مسلم" onerror="this.src='https://placehold.co/60x60?text=Muslim'">
-        <div class="logo-text">
-            <h1>مُـسـلِـم</h1>
-            <p style="color: white; font-size: 11px; opacity: 0.8;">Hajj & Umrah Guest Management System</p>
-        </div>
+        <img src="logo.png.PNG" alt="Muslim" onerror="this.src='https://placehold.co/50x50?text=M'">
+        <div><h1 style="color:var(--secondary); font-size:20px;">مُـسـلِـم</h1></div>
     </div>
-    <!-- خريطة التنقل العالمي عبر الـ 7 صفحات الإلزامية للمشروع التقني -->
     <nav>
-        <a href="index.php">الرئيسية (Home)</a>
-        <a href="about.php">عن النظام (About)</a>
-        <a href="services.php">الباقات (Services)</a>
-        <a href="transport.php">النقل والخرائط</a>
-        <a href="hotels.php">الفنادق (Hotels)</a>
-        <a href="dashboard.php">لوحة التحكم</a>
-        <a href="login.php">تسجيل الدخول</a>
+        <a onclick="showSec('home')" id="n-home" class="active">الرئيسية</a>
+        <a onclick="showSec('hotels')" id="n-hotels">الفنادق</a>
+        <a onclick="showSec('buses')" id="n-buses">الحافلات الـ 5</a>
+        <a onclick="showSec('counter')" id="n-counter">عداد الطواف</a>
+        <a onclick="showSec('cart')" id="n-cart">السلة والتصريح</a>
+        <a onclick="showSec('login')" id="n-login">تسجيل الدخول</a>
     </nav>
 </header>
 
 <div class="main-wrapper">
-    <!-- لوحة التحكم الجانبية الإحصائية لعدد الزيارات المذكورة بالمتطلبات -->
     <aside class="sidebar">
-        <h3 style="color: var(--primary-color); margin-bottom: 10px;">بيانات المستفيد</h3>
-        <p style="font-size: 13px; color: #718096; margin-bottom: 15px;">مرحباً بك في لوحة تحكم نظام مسلم الموحد[span_4](start_span)[span_4](end_span).</p>
-        
-        <div style="background: var(--bg-light); padding: 12px; border-radius: 6px; margin-bottom: 10px; text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; color: var(--primary-color);">1</span>
-            <p style="font-size: 12px; font-weight: bold;">عدد زيارات الحج السابقة</p>
+        <h3>الحساب الحالي</h3>
+        <div style="background:var(--bg); padding:10px; border-radius:6px; margin:10px 0;">
+            <p>الاسم: <strong id="s-name">زائر افتراضي</strong></p>
+            <p>الهوية: <span id="s-id">-----------</span></p>
         </div>
-        <div style="background: var(--bg-light); padding: 12px; border-radius: 6px; text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; color: var(--primary-color);">3</span>
-            <p style="font-size: 12px; font-weight: bold;">عدد زيارات العمرة السابقة</p>
-        </div>
+        <hr style="margin:10px 0; border:0; border-top:1px solid #cbd5e0;">
+        <p>🏨 السكن: <strong id="s-hotel" style="color:var(--primary);">لم يحدد</strong></p>
+        <p>🚌 الحافلة: <strong id="s-bus" style="color:var(--primary);">لم تحدد</strong></p>
     </aside>
 
-    <!-- واجهة العرض والتفاعل الأساسية للمنصة -->
     <main class="content-view">
-        <h2 style="color: var(--primary-color); margin-bottom: 10px;">Your Smart Hajj & Umrah Companion</h2>
-        <p style="color: #4a5568; margin-bottom: 20px;">موقع تفاعلي متكامل لإدارة حيازات باقات الحج والعمرة، تتبع أسطول النقل، وحجوزات غرف السكن الفندقي.</p>
+        <div id="top-banner" class="banner"></div>
 
-        <div class="grid">
-            <!-- كاونتر الطواف التفاعلي للمشروع -->
+        <!-- الرئيسية -->
+        <section id="sec-home" class="page-section active">
+            <h2>مرحباً بكم في منصة مسلم الموحدة</h2>
+            <p style="margin-top:10px; color:#4a5568;">نظام رقمي تفاعلي مخصص لخدمة ضيوف الرحمن، تتبع أسطول الحافلات الخمسة، وإدارة التسكين الفندقي.</p>
+            <div class="card" style="margin-top:20px; background:linear-gradient(135deg, #1b4d3e, #2d6a4f); color:white;">
+                <h4 style="color:var(--secondary);">💡 مشروع مادة تطوير تطبيقات الويب (IT1262)</h4>
+                <p style="margin-top:5px; font-size:14px;">تم تطوير الخلفية البرمجية للمشروع باستخدام لغة PHP وإدراجها في المستودع البرمجي وفق المتطلبات.</p>
+            </div>
+        </section>
+
+        <!-- الفنادق -->
+        <section id="sec-hotels" class="page-section">
+            <h2>🏨 حجز غرف السكن الفندقي المتاحة</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>فندق أنوار المدينة (المركزية)</h4>
+                    <p style="font-size:13px; color:#555;">غرف فاخرة بجوار الحرم النبوي الشريف.</p>
+                    <button class="btn" onclick="setHotel('فندق أنوار المدينة')">اختيار وتحديث السلة</button>
+                </div>
+                <div class="card">
+                    <h4>فندق إطلالة مكة (برج الساعة)</h4>
+                    <p style="font-size:13px; color:#555;">أجنحة ملكية مطلة مباشرة على الكعبة.</p>
+                    <button class="btn" onclick="setHotel('فندق إطلالة مكة')">اختيار وتحديث السلة</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- الحافلات -->
+        <section id="sec-buses" class="page-section">
+            <h2>🚌 تتبع واختيار حافلات النقل الـ 5 الترددية</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>حافلة المسار الأول (BUS-01)</h4>
+                    <p style="font-size:13px;">المسار: مواقف كدي ← ساحات الحرم</p>
+                    <button class="btn" onclick="setBus('المسار الأول BUS-01')">ركوب الحافلة</button>
+                </div>
+                <div class="card">
+                    <h4>حافلة المسار الثاني (BUS-02)</h4>
+                    <p style="font-size:13px;">المسار: قطار الحرمين ← المنطقة المركزية</p>
+                    <button class="btn" onclick="setBus('المسار الثاني BUS-02')">ركوب الحافلة</button>
+                </div>
+                <div class="card">
+                    <h4>حافلة المسار الثالث (BUS-03)</h4>
+                    <p style="font-size:13px;">المسار: مشعر منى ← عرفات</p>
+                    <button class="btn" onclick="setBus('المسار الثالث BUS-03')">ركوب الحافلة</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- العداد -->
+        <section id="sec-counter" class="page-section">
+            <h2>🕋 عداد أشواط الطواف الرقمي</h2>
+            <div class="card" style="text-align:center; max-width:300px; margin:20px auto;">
+                <h1 id="count-view" style="font-size:55px; color:var(--secondary);">0</h1>
+                <p>الشوط الحالي</p>
+                <button class="btn" onclick="addLap()">شوط جديد +1</button>
+                <button class="btn" style="background:#718096;" onclick="resetLap()">تصفير</button>
+            </div>
+        </section>
+
+        <!-- السلة والتصريح -->
+        <section id="sec-cart" class="page-section">
+            <h2>🛒 مراجعة السلة وإصدار التصريح الآمن</h2>
             <div class="card">
-                <h4>🕋 عداد أشواط الطواف</h4>
-                <p style="font-size: 13px; color: #718096; margin-top: 5px;">حساب إلكتروني ميسر لمساعدة الحجاج والزوار على ضبط الأشواط السبعة أثناء الطواف حول الكعبة المشرفة.</p>
-                <button class="btn" onclick="alert('انقر على الباقات أو الفنادق لتجربة الإضافة التفاعلية للسلة!')">استعراض الخدمة</button>
+                <p>الفندق المطلوب: <strong id="c-hotel">لم يحدد</strong></p>
+                <p>الحافلة المطلوبة: <strong id="c-bus">لم تحدد</strong></p>
+                <button class="btn" style="background:var(--secondary); color:black;" onclick="pay()">تأكيد الدفع الفوري إصدار تصريح (QR) 💳</button>
             </div>
+            <div id="qr-box" class="card" style="display:none; text-align:center; margin-top:15px; border:2px solid green;">
+                <h4 style="color:green;">✓ تم إصدار التصريح الرقمي بنجاح</h4>
+                <div style="font-family:monospace; font-size:24px; font-weight:bold; background:white; padding:10px; margin:10px 0; border:2px solid #000;">
+                    |||| || |||| ||| ||<br>MUSLIM-446006712
+                </div>
+            </div>
+        </section>
 
-            <!-- خرائط الحافلات الخمسة المباشرة -->
-            <div class="card">
-                <h4>🚌 تحديد مواقع الحافلات الـ 5</h4>
-                <p style="font-size: 13px; color: #718096; margin-top: 5px;">تتبع حي ومباشر عبر الخرائط لأسطول النقل اللوجستي المكون من 5 حافلات ترددية بين المنافذ والمشاعر المقدسة[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span).</p>
-                <button class="btn" onclick="location.href='transport.php'">تتبع أسطول الحافلات</button>
+        <!-- تسجيل الدخول -->
+        <section id="sec-login" class="page-section">
+            <h2>🔐 بوابة تسجيل الدخول (بيانات داليا المعتمدة)</h2>
+            <div style="background:#fffaf0; padding:10px; border-right:4px solid var(--secondary); margin:10px 0; font-size:13px;">
+                الهوية التجريبية: <code>12345678910</code> | كلمة المرور: <code>123456</code>
             </div>
-
-            <!-- حجوزات الفنادق المتاحة -->
-            <div class="card">
-                <h4>🏢 الغرف والباقات المتوفرة</h4>
-                <p style="font-size: 13px; color: #718096; margin-top: 5px;">استعرض الغرف الشاغرة في فنادق مكة والمدينة، واختر باقة الحج المناسبة لإضافتها مباشرة في السلة للتأكيد.</p>
-                <button class="btn" onclick="location.href='hotels.php'">عرض الغرف والحجوزات</button>
-            </div>
-        </div>
-
-        <!-- خانة تعيين التحقق الذكي (نفاذ للمواطن / بريد إلكتروني للزائر) عند نسيان الباسورد -->
-        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-        <h3 style="color: var(--primary-color); margin-bottom: 15px;">بوابة التحقق السريع والدخول الآمن</h3>
-        
-        <form style="max-width: 450px;" onsubmit="event.preventDefault(); alert('تم تشغيل كود JavaScript للتحقق وصحة البيانات بنجاح قبل الإرسال!');">
-            <div class="form-group">
-                <label>نوع الحساب المستفيد:</label>
-                <select id="user_type" onchange="var lbl = document.getElementById('id_label'); if(this.value=='citizen'){lbl.innerText='رقم الهوية الوطنية (المرتبطة بنفاذ):';}else{lbl.innerText='رقم كرت الزيارة / جواز السفر الدولي:';}">
-                    <option value="citizen">مواطن / مقيم (يجيك الرمز على نفاذ للتأكيد)</option>
-                    <option value="visitor">زائر (يجيك الرمز على الإيميل المرتبط ببيانات كرت الزيارة)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label id="id_label">رقم الهوية الوطنية (المرتبطة بنفاذ):</label>
-                <input type="text" placeholder="مثال: 1284007099" required>
-            </div>
-            <button type="submit" class="btn" style="background: var(--secondary-color); color: #000;">تسجيل دخول آمن للمنصة</button>
-        </form>
+            <form onsubmit="login(event)" style="max-width:400px; margin-top:15px;">
+                <div class="form-group"><label>رقم الهوية:</label><input type="text" id="u-id" required></div>
+                <div class="form-group"><label>كلمة المرور:</label><input type="password" id="u-pass" required></div>
+                <button type="submit" class="btn">دخول آمن</button>
+            </form>
+        </section>
     </main>
 </div>
 
-<footer>
-    <p>© 2026 Muslim Platform | مشروع مادة تطوير تطبيقات الويب IT1262</p>
-</footer>
-
+<script>
+    let hotel = "لم يحدد", bus = "لم تحدد", laps = 0;
+    function showSec(id) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        document.getElementById('sec-'+id).classList.add('active');
+        document.getElementById('n-'+id).classList.add('active');
+        document.getElementById('top-banner').style.display = "none";
+    }
+    function login(e) {
+        e.preventDefault();
+        if(document.getElementById('u-id').value==='12345678910' && document.getElementById('u-pass').value==='123456') {
+            document.getElementById('s-name').innerText = "داليا عائض الغامدي";
+            document.getElementById('s-id').innerText = "12345678910";
+            msg("🔐 أهلاً بكِ يا داليا، تم التحقق بنجاح وتنشيط الجلسة!");
+            setTimeout(() => showSec('hotels'), 1000);
+        } else { msg("❌ خطأ بالبيانات!", true); }
+    }
+    function setHotel(h) { hotel = h; document.getElementById('s-hotel').innerText=h; document.getElementById('c-hotel').innerText=h; msg("🏨 تم تحديث السكن بالفندق المختار!"); }
+    function setBus(b) { bus = b; document.getElementById('s-bus').innerText=b; document.getElementById('c-bus').innerText=b; msg("🚌 تم ربط مسار الحافلة بنجاح!"); }
+    function addLap() { if(laps<7) { laps++; document.getElementById('count-view').innerText=laps; if(laps===7) alert("🕋 تقبل الله طوافكِ! تم إتمام 7 أشواط."); } }
+    function resetLap() { laps=0; document.getElementById('count-view').innerText=0; }
+    function pay() { if(hotel==="لم يحدد") { alert("فضلاً اختاري الفندق أولاً"); return; } document.getElementById('qr-box').style.display="block"; msg("💳 تم السداد وتوليد تصريح العبور الحقيقي!"); }
+    function msg(m, err=false) { const b = document.getElementById('top-banner'); b.innerText=m; b.style.background=err?"#fed7d7":"#c6f6d5"; b.style.color=err?"#9b2c2c":"#22543d"; b.style.display="block"; window.scrollTo({top:0, behavior:'smooth'}); }
+</script>
 </body>
 </html>
